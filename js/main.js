@@ -60,3 +60,98 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+
+// ==========================================
+// BUSCA (filtra os cards de área profissional)
+// ==========================================
+document.addEventListener('DOMContentLoaded', function () {
+
+  const searchBox = document.querySelector('.search-box');
+  const searchToggleBtn = document.getElementById('searchToggleBtn');
+  const searchInput = document.getElementById('searchInput');
+  const cards = document.querySelectorAll('.cards-grid .card');
+  const noResultsMessage = document.getElementById('noResultsMessage');
+  const searchTermDisplay = document.getElementById('searchTermDisplay');
+
+  if (!searchBox || !searchToggleBtn || !searchInput) {
+    return;
+  }
+
+  function abrirBusca() {
+    searchBox.classList.add('is-open');
+    searchToggleBtn.setAttribute('aria-expanded', 'true');
+    searchInput.focus();   // já deixa o cursor piscando dentro do campo
+  }
+
+  function fecharBusca() {
+    searchBox.classList.remove('is-open');
+    searchToggleBtn.setAttribute('aria-expanded', 'false');
+    searchInput.value = '';
+    filtrarCards('');   // ao fechar, volta a mostrar todos os cards
+  }
+
+  // Clique no ícone de lupa: alterna entre abrir e fechar
+  searchToggleBtn.addEventListener('click', function (event) {
+    event.stopPropagation();
+    const jaEstaAberta = searchBox.classList.contains('is-open');
+    if (jaEstaAberta) {
+      fecharBusca();
+    } else {
+      abrirBusca();
+    }
+  });
+
+  // Impede que clicar DENTRO do campo de texto feche a busca
+  // (sem isso, o listener de "clique fora" logo abaixo fecharia ela sozinha)
+  searchInput.addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+
+  // Clique fora do search-box: fecha
+  document.addEventListener('click', function (event) {
+    if (!searchBox.contains(event.target)) {
+      fecharBusca();
+    }
+  });
+
+  // Tecla Esc: fecha
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      fecharBusca();
+    }
+  });
+
+  // O coração da busca: roda a cada letra digitada
+  function filtrarCards(termo) {
+    const termoBusca = termo.trim().toLowerCase();
+    let algumCardVisivel = false;
+
+    cards.forEach(function (card) {
+      const titulo = card.querySelector('h4').textContent.toLowerCase();
+      const descricao = card.querySelector('p').textContent.toLowerCase();
+      const combina = titulo.includes(termoBusca) || descricao.includes(termoBusca);
+
+      // Atributo "hidden" nativo do HTML: o navegador já sabe esconder o elemento sozinho
+      card.hidden = termoBusca !== '' && !combina;
+
+      if (!card.hidden) {
+        algumCardVisivel = true;
+      }
+    });
+
+    const semResultado = termoBusca !== '' && !algumCardVisivel;
+    if (noResultsMessage) {
+      noResultsMessage.hidden = !semResultado;
+    }
+    if (searchTermDisplay) {
+      searchTermDisplay.textContent = termo;
+    }
+  }
+
+  // "input" dispara a cada tecla digitada (diferente de "change", que só dispara ao sair do campo)
+  searchInput.addEventListener('input', function (event) {
+    filtrarCards(event.target.value);
+  });
+
+});

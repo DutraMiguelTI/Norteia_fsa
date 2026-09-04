@@ -21,9 +21,13 @@
         </div>
       </div>
       <div class="topbar-actions">
-        <button class="icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button>
+        <!-- Busca: o JS vai adicionar/remover "is-open" aqui pra expandir o campo -->
+        <div class="search-box" id="searchBox">
+          <button class="icon-btn" id="searchToggleBtn" type="button" aria-expanded="false" aria-label="Buscar área profissional">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+          <input type="text" class="search-input" id="searchInput" placeholder="Buscar área..." aria-label="Buscar área profissional">
+        </div>
 
         <!-- Menu do perfil: o JS vai adicionar/remover a classe "is-open" aqui pra abrir/fechar -->
         <div class="profile-menu">
@@ -210,6 +214,9 @@
           <p>Movimento, saúde e qualidade de vida.</p>
         </article>
       </div>
+
+      <!-- Só aparece quando a busca não encontra nenhum card. O JS controla o atributo "hidden" -->
+      <p class="no-results" id="noResultsMessage" hidden>Nenhuma área encontrada para "<span id="searchTermDisplay"></span>".</p>
 
       <div class="info-bar">
         <p><svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Você pode selecionar mais de uma área. Isso nos ajuda a entender melhor seus interesses!</p>

@@ -197,6 +197,49 @@ body {
   flex-shrink: 0;
 }
 
+/* ==========================================
+   4.2 BUSCA (expande ao clicar)
+   ========================================== */
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 0;
+  margin-left: 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: 20px;
+  font-size: 14px;
+  color: var(--cor-texto);
+  overflow: hidden;   /* esconde o texto/placeholder enquanto o campo está fechado (width: 0) */
+
+  /* anima largura, opacidade e o respiro (margin) juntos, suavemente */
+  transition: width 0.25s ease, opacity 0.2s ease, margin-left 0.25s ease, padding 0.25s ease;
+}
+
+/* Quando o JS adicionar "is-open" no .search-box, o campo abre */
+.search-box.is-open .search-input {
+  width: 200px;
+  opacity: 1;
+  padding: 9px 14px;
+  margin-left: 8px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+}
+
+.no-results {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--cor-texto-suave);
+  font-size: 14px;
+}
+
 .icon-btn {
   width: 40px;
   height: 40px;
