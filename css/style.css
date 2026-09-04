@@ -77,7 +77,124 @@ body {
 
 .topbar-actions {
   display: flex;
+  align-items: center;
   gap: 12px;
+}
+
+/* ==========================================
+   4.1 MENU DO PERFIL (dropdown)
+   ========================================== */
+.profile-menu {
+  position: relative;   /* "âncora": é em relação a essa caixa que o dropdown vai se posicionar */
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar svg {
+  width: 20px;
+  height: 20px;
+}
+
+.profile-avatar--small {
+  width: 32px;
+  height: 32px;
+}
+
+.profile-avatar--small svg {
+  width: 16px;
+  height: 16px;
+}
+
+.profile-chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--cor-texto-suave);
+  transition: transform 0.2s ease;   /* gira suavemente ao abrir */
+}
+
+/* Quando o JS adicionar "is-open" no .profile-menu, a seta vira de ponta-cabeça */
+.profile-menu.is-open .profile-chevron {
+  transform: rotate(180deg);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);   /* logo abaixo do botão, com um respiro de 12px */
+  right: 0;                  /* alinhado pela direita, como no seu mockup */
+  width: 230px;
+  background-color: var(--cor-branco);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  padding: 8px;
+
+  /* Escondido por padrão: */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+/* Quando o JS adicionar "is-open", o dropdown aparece */
+.profile-menu.is-open .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.profile-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px 14px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--cor-borda);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.profile-dropdown-list {
+  list-style: none;
+}
+
+.profile-dropdown-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--cor-texto);
+  font-size: 14px;
+}
+
+.profile-dropdown-list a:hover {
+  background-color: var(--cor-fundo);
+}
+
+.profile-dropdown-list svg {
+  width: 16px;
+  height: 16px;
+  color: var(--cor-texto-suave);
+  flex-shrink: 0;
 }
 
 .icon-btn {
