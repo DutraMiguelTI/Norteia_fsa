@@ -80,13 +80,18 @@
   <div class="page-layout">
 
     <!-- 2. SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
+      <!-- Botão de retrair/expandir: o JS alterna a classe "is-collapsed" aqui na sidebar -->
+      <button class="sidebar-toggle" id="sidebarToggleBtn" type="button" aria-expanded="true" aria-label="Recolher menu lateral">
+        <svg class="sidebar-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
       <nav class="main-nav">
         <ul>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Início</a></li>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> Descobrir</a></li>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A5.5 5.5 0 0 0 4 7.5v0A2.5 2.5 0 0 0 4 12.5 5.5 5.5 0 0 0 9.5 18v2M14.5 2A5.5 5.5 0 0 1 20 7.5v0a2.5 2.5 0 0 1 0 5A5.5 5.5 0 0 1 14.5 18v2M9.5 2h5M9.5 20h5"/></svg> Testes</a></li>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Sobre</a></li>
+          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> <span class="nav-label">Início</span></a></li>
+          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> <span class="nav-label">Descobrir</span></a></li>
+          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A5.5 5.5 0 0 0 4 7.5v0A2.5 2.5 0 0 0 4 12.5 5.5 5.5 0 0 0 9.5 18v2M14.5 2A5.5 5.5 0 0 1 20 7.5v0a2.5 2.5 0 0 1 0 5A5.5 5.5 0 0 1 14.5 18v2M9.5 2h5M9.5 20h5"/></svg> <span class="nav-label">Testes</span></a></li>
+          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> <span class="nav-label">Sobre</span></a></li>
         </ul>
       </nav>
 

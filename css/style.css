@@ -280,6 +280,55 @@ body {
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.04);   /* mesma ideia da sombra do header, só que na lateral */
   border-radius: 0 0 16px 0;   /* só o canto inferior direito — o topo agora encosta no header */
   padding: 24px 16px 24px 0;      /* left ZERO: mantém o alinhamento com a logo do header */
+  position: relative;    /* "âncora" pro botão de retrair, que fica posicionado em relação a essa caixa */
+  transition: width 0.25s ease;
+}
+
+/* Estado encolhido: o JS adiciona essa classe na sidebar */
+.sidebar.is-collapsed {
+  width: 72px;
+}
+
+.sidebar.is-collapsed .nav-label {
+  display: none;   /* esconde só o texto, o ícone continua */
+}
+
+.sidebar.is-collapsed .main-nav a {
+  justify-content: center;   /* centraliza o ícone, já que sobrou só ele */
+  padding: 12px 0;
+}
+
+.sidebar.is-collapsed .help-card {
+  display: none;   /* esse card não faz sentido sem o texto, então some inteiro */
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 24px;
+  right: -14px;   /* metade do botão "vaza" pra fora da sidebar, um padrão comum desse tipo de controle */
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--cor-borda);
+  background-color: var(--cor-branco);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cor-texto-suave);
+  z-index: 5;
+}
+
+.sidebar-toggle-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;   /* gira suavemente ao encolher */
+}
+
+/* Quando encolhida, a seta vira de ponta-cabeça (agora aponta pra direita, "abrir") */
+.sidebar.is-collapsed .sidebar-toggle-icon {
+  transform: rotate(180deg);
 }
 
 .main-nav ul {
@@ -599,6 +648,10 @@ body {
 
 /* ---------- Celular grande / tablet retrato (telas até 768px) ---------- */
 @media (max-width: 768px) {
+  .sidebar-toggle {
+    display: none;
+  }
+
   .page-layout {
     flex-direction: column;   /* sidebar deixa de ficar do lado, vai pra cima do conteúdo */
     padding: 16px;             /* volta a ter respiro nos dois lados, já que não tem mais sidebar ao lado pra "colar" */

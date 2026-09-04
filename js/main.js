@@ -155,3 +155,30 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+
+// ==========================================
+// MENU LATERAL RETRÁTIL
+// ==========================================
+document.addEventListener('DOMContentLoaded', function () {
+
+  const sidebar = document.getElementById('sidebar');
+  const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+
+  if (!sidebar || !sidebarToggleBtn) {
+    return;
+  }
+
+  sidebarToggleBtn.addEventListener('click', function () {
+    const estaEncolhida = sidebar.classList.toggle('is-collapsed');
+    // classList.toggle() já adiciona OU remove a classe, e devolve true/false
+    // dizendo o resultado — economiza escrever um if/else aqui.
+
+    sidebarToggleBtn.setAttribute('aria-expanded', String(!estaEncolhida));
+    sidebarToggleBtn.setAttribute(
+      'aria-label',
+      estaEncolhida ? 'Expandir menu lateral' : 'Recolher menu lateral'
+    );
+  });
+
+});
