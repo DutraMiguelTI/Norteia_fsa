@@ -182,3 +182,31 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+
+// ==========================================
+// ITEM ATIVO DO MENU LATERAL
+// ==========================================
+// Como as próximas páginas ainda não existem, os links são só "#" por enquanto.
+// Aqui a gente simula visualmente a navegação: ao clicar, aquele item fica
+// verde (como o "Início" já ficava por padrão), e os outros voltam ao normal.
+document.addEventListener('DOMContentLoaded', function () {
+
+  const linksDoMenu = document.querySelectorAll('.main-nav a');
+
+  linksDoMenu.forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      // Impede o navegador de "pular" pro topo da página (comportamento padrão de href="#")
+      event.preventDefault();
+
+      // Tira o destaque de QUALQUER link que estava ativo antes...
+      linksDoMenu.forEach(function (outroLink) {
+        outroLink.classList.remove('is-active');
+      });
+
+      // ...e coloca só no que acabou de ser clicado
+      link.classList.add('is-active');
+    });
+  });
+
+});

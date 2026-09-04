@@ -354,8 +354,9 @@ body {
   flex-shrink: 0;   /* impede o ícone de encolher se o texto for grande */
 }
 
-/* Estilo do item ativo (a página em que estamos agora: "Início") */
-.main-nav li:first-child a {
+/* Estilo do item ativo: agora é uma classe (.is-active), não mais "o primeiro item" fixo.
+   O JS decide qual link recebe essa classe quando a pessoa clica. */
+.main-nav a.is-active {
   background-color: var(--cor-primaria-clara);
   color: var(--cor-primaria);
   font-weight: 600;
