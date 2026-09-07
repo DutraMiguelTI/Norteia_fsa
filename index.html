@@ -104,25 +104,44 @@
 
     <!-- 3. CONTEÚDO PRINCIPAL -->
     <main class="content">
-      <!-- HERO / CARROSSEL: por enquanto só o Slide 1 existe.
-           A estrutura já está pronta para receber mais slides depois
-           (bastaria duplicar .hero-slide e ativar a lógica de troca). -->
-      <section class="hero-carousel">
-        <div class="hero-slide is-active">
+      <!-- HERO / CARROSSEL: agora com 2 slides de verdade.
+           O JS controla qual .hero-slide tem a classe "is-active" (visível). -->
+      <section class="hero-carousel" id="heroCarousel" aria-roledescription="carrossel" aria-label="Destaques">
+
+        <div class="hero-slide is-active" data-slide-index="0">
           <div class="hero-content">
             <h2>Descubra seu caminho profissional</h2>
             <p>Responda nossos testes e explore possibilidades para encontrar as áreas que mais combinam com você.</p>
-
-            <!-- Indicadores de slide: só o 1º ativo por enquanto.
-                 Futuramente: um <span class="hero-indicator"> por slide. -->
-            <div class="hero-indicators">
-              <span class="hero-indicator is-active"></span>
-            </div>
+            <button class="hero-cta" data-action="scroll-cards">Explorar possibilidades</button>
           </div>
-
           <div class="hero-media">
-            <img class="hero-illustration" src="images/hero-slide-1.png" alt="Jovem usando moletom verde, visto de costas, olhando pensativo para uma placa de sinalização com ícones representando diferentes áreas profissionais">
+            <img class="hero-illustration" src="images/banner1.png" alt="Jovem usando moletom verde, visto de costas, olhando pensativo para uma placa de sinalização com ícones representando diferentes áreas profissionais">
           </div>
+        </div>
+
+        <div class="hero-slide" data-slide-index="1">
+          <div class="hero-content">
+            <h2>Descubra qual carreira tem tudo a ver com você</h2>
+            <p>Responda ao teste vocacional e descubra suas habilidades, interesses e as áreas que mais combinam com o seu perfil.</p>
+            <button class="hero-cta" data-action="teste-vocacional">Fazer teste vocacional</button>
+          </div>
+          <div class="hero-media">
+            <img class="hero-illustration" src="images/banner2.png" alt="Prancheta com lista de tarefas marcadas, cercada por ícones de maleta, saúde, pessoas, microscópio e notebook, ao lado de um alvo com seta no centro e uma pilha de livros, representando um teste vocacional">
+          </div>
+        </div>
+
+        <!-- Setas de navegação manual -->
+        <button class="hero-arrow hero-arrow--prev" id="heroPrevBtn" type="button" aria-label="Slide anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="hero-arrow hero-arrow--next" id="heroNextBtn" type="button" aria-label="Próximo slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Indicadores (bolinhas), na parte inferior do hero -->
+        <div class="hero-indicators" id="heroIndicators">
+          <button class="hero-indicator is-active" type="button" data-slide-index="0" aria-label="Ir para o slide 1"></button>
+          <button class="hero-indicator" type="button" data-slide-index="1" aria-label="Ir para o slide 2"></button>
         </div>
       </section>
 

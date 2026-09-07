@@ -210,3 +210,139 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+
+// ==========================================
+// CARROSSEL DO HERO
+// ==========================================
+document.addEventListener('DOMContentLoaded', function () {
+
+  const heroCarousel = document.getElementById('heroCarousel');
+  if (!heroCarousel) {
+    return;
+  }
+
+  const slides = Array.from(heroCarousel.querySelectorAll('.hero-slide'));
+  const indicadores = Array.from(heroCarousel.querySelectorAll('.hero-indicator'));
+  const botaoAnterior = document.getElementById('heroPrevBtn');
+  const botaoProximo = document.getElementById('heroNextBtn');
+
+  const TOTAL_SLIDES = slides.length;
+  const INTERVALO_AUTOPLAY_MS = 9000;   // troca sozinho a cada 9 segundos (era 6s — rápido demais)
+
+  let indiceAtual = 0;
+  let temporizadorAutoplay = null;
+
+  function irParaSlide(indiceDesejado) {
+    // Esse cálculo com "%" (resto da divisão) faz o índice sempre "dar a volta":
+    // se passar do último slide, volta pro primeiro; se for antes do primeiro, vai pro último.
+    const novoIndice = (indiceDesejado + TOTAL_SLIDES) % TOTAL_SLIDES;
+
+    slides[indiceAtual].classList.remove('is-active');
+    if (indicadores[indiceAtual]) {
+      indicadores[indiceAtual].classList.remove('is-active');
+    }
+
+    indiceAtual = novoIndice;
+
+    slides[indiceAtual].classList.add('is-active');
+    if (indicadores[indiceAtual]) {
+      indicadores[indiceAtual].classList.add('is-active');
+    }
+  }
+
+  function irParaProximoSlide() {
+    irParaSlide(indiceAtual + 1);
+  }
+
+  function irParaSlideAnterior() {
+    irParaSlide(indiceAtual - 1);
+  }
+
+  function iniciarAutoplay() {
+    temporizadorAutoplay = setInterval(irParaProximoSlide, INTERVALO_AUTOPLAY_MS);
+  }
+
+  function reiniciarAutoplay() {
+    // Toda vez que a pessoa navega manualmente, reinicia a contagem —
+    // assim o carrossel não troca de novo "sem querer" logo em seguida.
+    clearInterval(temporizadorAutoplay);
+    iniciarAutoplay();
+  }
+
+  if (botaoProximo) {
+    botaoProximo.addEventListener('click', function () {
+      irParaProximoSlide();
+      reiniciarAutoplay();
+    });
+  }
+
+  if (botaoAnterior) {
+    botaoAnterior.addEventListener('click', function () {
+      irParaSlideAnterior();
+      reiniciarAutoplay();
+    });
+  }
+
+  indicadores.forEach(function (indicador, indice) {
+    indicador.addEventListener('click', function () {
+      irParaSlide(indice);
+      reiniciarAutoplay();
+    });
+  });
+
+  // Pausa o autoplay enquanto o mouse está em cima do hero (boa prática:
+  // ninguém gosta de tentar ler um texto que troca sozinho embaixo do cursor)
+  heroCarousel.addEventListener('mouseenter', function () {
+    clearInterval(temporizadorAutoplay);
+  });
+
+  heroCarousel.addEventListener('mouseleave', function () {
+    iniciarAutoplay();
+  });
+
+  iniciarAutoplay();
+
+});
+
+
+// ==========================================
+// AÇÕES DOS BOTÕES DO HERO
+// ==========================================
+document.addEventListener('DOMContentLoaded', function () {
+
+  const cardsGrid = document.querySelector('.cards-grid');
+  const botoesDoHero = document.querySelectorAll('.hero-cta');
+
+  botoesDoHero.forEach(function (botao) {
+    botao.addEventListener('click', function () {
+      const acao = botao.getAttribute('data-action');
+
+      if (acao === 'scroll-cards' && cardsGrid) {
+        cardsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (acao === 'teste-vocacional') {
+        // Essa página ainda não existe no projeto — em vez de não fazer nada
+        // (o que pareceria um botão quebrado), avisamos a pessoa com um toast.
+        mostrarToast('🚧 Teste vocacional em construção — em breve por aqui!');
+      }
+    });
+  });
+
+  function mostrarToast(mensagem) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = mensagem;
+    document.body.appendChild(toast);
+
+    // Espera 3 segundos, começa a animação de saída, e só then remove do HTML de vez
+    setTimeout(function () {
+      toast.classList.add('toast--saindo');
+      setTimeout(function () {
+        toast.remove();
+      }, 300);   // 300ms = tempo da transição definida no CSS (.toast--saindo)
+    }, 3000);
+  }
+
+});
