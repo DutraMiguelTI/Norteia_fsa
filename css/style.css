@@ -38,6 +38,8 @@ body {
    4. HEADER (topo da página)
    ========================================== */
 .topbar {
+  position: relative;   /* necessário pro z-index abaixo funcionar */
+  z-index: 100;          /* bem mais alto que qualquer coisa na página (o carrossel usa z-index: 5) */
   background-color: var(--cor-branco);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);   /* sombra leve, dá sensação de "flutuar" sobre o conteúdo */
 }
@@ -77,7 +79,168 @@ body {
 
 .topbar-actions {
   display: flex;
+  align-items: center;
   gap: 12px;
+}
+
+/* ==========================================
+   4.1 MENU DO PERFIL (dropdown)
+   ========================================== */
+.profile-menu {
+  position: relative;   /* "âncora": é em relação a essa caixa que o dropdown vai se posicionar */
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar svg {
+  width: 20px;
+  height: 20px;
+}
+
+.profile-avatar--small {
+  width: 32px;
+  height: 32px;
+}
+
+.profile-avatar--small svg {
+  width: 16px;
+  height: 16px;
+}
+
+.profile-chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--cor-texto-suave);
+  transition: transform 0.2s ease;   /* gira suavemente ao abrir */
+}
+
+/* Quando o JS adicionar "is-open" no .profile-menu, a seta vira de ponta-cabeça */
+.profile-menu.is-open .profile-chevron {
+  transform: rotate(180deg);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);   /* logo abaixo do botão, com um respiro de 12px */
+  right: 0;                  /* alinhado pela direita, como no seu mockup */
+  width: 230px;
+  z-index: 10;
+  background-color: var(--cor-branco);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  padding: 8px;
+
+  /* Escondido por padrão: */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+/* Quando o JS adicionar "is-open", o dropdown aparece */
+.profile-menu.is-open .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.profile-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px 14px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--cor-borda);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.profile-dropdown-list {
+  list-style: none;
+}
+
+.profile-dropdown-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--cor-texto);
+  font-size: 14px;
+}
+
+.profile-dropdown-list a:hover {
+  background-color: var(--cor-fundo);
+}
+
+.profile-dropdown-list svg {
+  width: 16px;
+  height: 16px;
+  color: var(--cor-texto-suave);
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   4.2 BUSCA (expande ao clicar)
+   ========================================== */
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 0;
+  margin-left: 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: 20px;
+  font-size: 14px;
+  color: var(--cor-texto);
+  overflow: hidden;   /* esconde o texto/placeholder enquanto o campo está fechado (width: 0) */
+
+  /* anima largura, opacidade e o respiro (margin) juntos, suavemente */
+  transition: width 0.25s ease, opacity 0.2s ease, margin-left 0.25s ease, padding 0.25s ease;
+}
+
+/* Quando o JS adicionar "is-open" no .search-box, o campo abre */
+.search-box.is-open .search-input {
+  width: 200px;
+  opacity: 1;
+  padding: 9px 14px;
+  margin-left: 8px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+}
+
+.no-results {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--cor-texto-suave);
+  font-size: 14px;
 }
 
 .icon-btn {
@@ -120,6 +283,55 @@ body {
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.04);   /* mesma ideia da sombra do header, só que na lateral */
   border-radius: 0 0 16px 0;   /* só o canto inferior direito — o topo agora encosta no header */
   padding: 24px 16px 24px 0;      /* left ZERO: mantém o alinhamento com a logo do header */
+  position: relative;    /* "âncora" pro botão de retrair, que fica posicionado em relação a essa caixa */
+  transition: width 0.25s ease;
+}
+
+/* Estado encolhido: o JS adiciona essa classe na sidebar */
+.sidebar.is-collapsed {
+  width: 72px;
+}
+
+.sidebar.is-collapsed .nav-label {
+  display: none;   /* esconde só o texto, o ícone continua */
+}
+
+.sidebar.is-collapsed .main-nav a {
+  justify-content: center;   /* centraliza o ícone, já que sobrou só ele */
+  padding: 12px 0;
+}
+
+.sidebar.is-collapsed .help-card {
+  display: none;   /* esse card não faz sentido sem o texto, então some inteiro */
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 24px;
+  right: -14px;   /* metade do botão "vaza" pra fora da sidebar, um padrão comum desse tipo de controle */
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--cor-borda);
+  background-color: var(--cor-branco);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cor-texto-suave);
+  z-index: 5;
+}
+
+.sidebar-toggle-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;   /* gira suavemente ao encolher */
+}
+
+/* Quando encolhida, a seta vira de ponta-cabeça (agora aponta pra direita, "abrir") */
+.sidebar.is-collapsed .sidebar-toggle-icon {
+  transform: rotate(180deg);
 }
 
 .main-nav ul {
@@ -145,8 +357,9 @@ body {
   flex-shrink: 0;   /* impede o ícone de encolher se o texto for grande */
 }
 
-/* Estilo do item ativo (a página em que estamos agora: "Início") */
-.main-nav li:first-child a {
+/* Estilo do item ativo: agora é uma classe (.is-active), não mais "o primeiro item" fixo.
+   O JS decide qual link recebe essa classe quando a pessoa clica. */
+.main-nav a.is-active {
   background-color: var(--cor-primaria-clara);
   color: var(--cor-primaria);
   font-weight: 600;
@@ -200,28 +413,43 @@ body {
 }
 
 /* ==========================================
-   8. HERO / CARROSSEL (título grande de boas-vindas)
-   Estrutura pronta para futuros slides:
-   .hero-carousel > .hero-slide (um por slide, o ativo tem .is-active)
+   8. HERO / CARROSSEL
+   Os .hero-slide ficam TODOS no mesmo lugar (position: absolute),
+   um exatamente sobre o outro. O JS troca qual deles tem a classe
+   .is-active, e o CSS anima a opacidade — isso cria o efeito de fade.
    ========================================== */
 .hero-carousel {
+  position: relative;   /* "âncora" pros slides, setas e indicadores, que são absolute */
   width: 100%;
   max-width: 1200px;
-  min-height: 300px;   /* era 420px — agora dentro do intervalo 280-320px pedido */
+  min-height: 440px;    /* proporção parecida com os 1800x680px pedidos, na largura de 1200px */
   border-radius: 24px;
-  padding: 50px 60px;
-  display: flex;
-  align-items: center;   /* centraliza o .hero-slide verticalmente dentro do banner */
-  overflow: hidden;      /* prepara o terreno para quando os slides deslizarem */
-  margin-bottom: 20px;   /* era 28px — menos espaço até o título "Explore áreas..." */
+  overflow: hidden;      /* corta qualquer coisa que ultrapasse os cantos arredondados */
+  background: linear-gradient(135deg, #ffffff 0%, #eaf6ef 100%);   /* combina com o fundo das ilustrações, ajuda a "integrar" */
+  margin-bottom: 20px;
 }
 
 .hero-slide {
+  position: absolute;   /* todos os slides ocupam o MESMO espaço, empilhados */
+  inset: 0;              /* atalho pra top:0; right:0; bottom:0; left:0 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  width: 100%;   /* preenche toda a largura do banner (sem isso, ficaria do tamanho do conteúdo só) */
+  padding: 50px 60px;   /* o padding mora aqui agora (não no .hero-carousel), já que o slide é quem ocupa o espaço */
+
+  opacity: 0;             /* escondido por padrão... */
+  pointer-events: none;   /* ...e não clicável enquanto escondido */
+  transition: opacity 0.6s ease;   /* essa transição é o "fade" */
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hero-content {
+  max-width: 480px;
 }
 
 .hero-content h2 {
@@ -233,63 +461,156 @@ body {
 .hero-content p {
   font-size: 15px;
   color: var(--cor-texto-suave);
-  max-width: 480px;      /* impede o texto de esticar demais na horizontal */
   line-height: 1.5;
+  margin-bottom: 24px;
 }
 
-/* Indicadores de slide (as barrinhas embaixo do texto) */
-.hero-indicators {
-  display: flex;
-  gap: 6px;
-  margin-top: 20px;
+.hero-cta {
+  padding: 14px 26px;
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  border: none;
+  border-radius: 999px;   /* formato "pílula" — bem arredondado, como pedido */
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;   /* o texto no HTML fica normal; aqui a gente só EXIBE em maiúsculas */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.hero-indicator {
-  width: 24px;
-  height: 4px;
-  border-radius: 2px;
-  background-color: var(--cor-borda);   /* indicador inativo (cinza) */
-}
-
-.hero-indicator.is-active {
-  background-color: var(--cor-primaria); /* indicador do slide atual (verde) */
+.hero-cta:hover {
+  background-color: #17805c;
+  transform: translateY(-2px);
 }
 
 .hero-media {
-  flex-shrink: 0;   /* não deixa a ilustração encolher se a tela apertar */
-  width: 400px;     /* era 320px — agora dentro do intervalo 350-430px pedido */
+  position: absolute;   /* sai do fluxo do flex — agora é uma camada de fundo, não mais "ao lado" do texto */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 58%;            /* ocupa boa parte do lado direito do hero */
+  z-index: 0;             /* fica ATRÁS do .hero-content */
+  pointer-events: none;   /* garante que não atrapalha cliques no texto/botão */
+}
+
+.hero-media picture {
+  display: block;   /* <picture> é inline por padrão — isso garante que ele preencha a .hero-media certinho */
+  width: 100%;
+  height: 100%;
 }
 
 .hero-illustration {
   width: 100%;
-  height: auto;        /* preserva a proporção original da imagem */
+  height: 100%;
+  object-fit: cover;      /* preenche o espaço todo sem distorcer, cortando o excesso */
   display: block;
+
+  /* O degradê que faz a mágica: a imagem começa 100% transparente na borda
+     esquerda e vai ficando sólida — isso "dissolve" a quina reta da foto
+     dentro do fundo do .hero-carousel, em vez de parecer um quadro colado. */
+  mask-image: linear-gradient(to right, transparent 0%, black 35%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%);
+}
+
+.hero-content {
+  position: relative;   /* precisa disso pro z-index abaixo funcionar */
+  z-index: 1;             /* fica NA FRENTE da imagem de fundo */
+}
+
+/* ---------- Setas de navegação ---------- */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-texto);
+  cursor: pointer;
+  z-index: 5;   /* garante que fica por cima dos slides */
+  transition: background-color 0.2s ease;
+}
+
+.hero-arrow:hover {
+  background-color: var(--cor-branco);
+}
+
+.hero-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hero-arrow--prev {
+  left: 20px;
+}
+
+.hero-arrow--next {
+  right: 20px;
+}
+
+/* ---------- Indicadores (bolinhas) ---------- */
+.hero-indicators {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.hero-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.15);   /* indicador inativo */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-indicator.is-active {
+  background-color: var(--cor-primaria);   /* indicador do slide atual */
+  transform: scale(1.2);
 }
 
 /* ---------- Responsividade do hero ---------- */
 
 /* Tablet: reduz proporcionalmente */
 @media (max-width: 1024px) {
+  .hero-carousel {
+    min-height: 380px;
+  }
+
   .hero-content h2 {
     font-size: 26px;
   }
 
   .hero-media {
-    width: 260px;   /* era 220px — acompanha o aumento do desktop, mantendo a proporção */
+    width: 50%;
   }
 }
 
 /* Celular: texto e imagem empilhados, imagem sem cortar/espremer */
 @media (max-width: 640px) {
   .hero-carousel {
-    padding: 28px 24px;   /* 50px/60px fica pesado demais numa tela pequena */
-    min-height: auto;      /* deixa a altura livre, seguindo o conteúdo empilhado */
+    min-height: 560px;   /* precisa de altura fixa mesmo empilhado, já que os slides são "absolute" */
     border-radius: 20px;
   }
 
   .hero-slide {
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
+    padding: 28px 24px 56px;   /* mais espaço embaixo, pra não ficar em cima dos indicadores */
   }
 
   .hero-content p {
@@ -297,9 +618,23 @@ body {
   }
 
   .hero-media {
+    position: static;    /* sai do modo "camada de fundo" — no celular ela empilha normalmente */
     width: 100%;
     max-width: 280px;
+    height: auto;
     align-self: center;   /* centraliza a ilustração embaixo do texto */
+  }
+
+  .hero-illustration {
+    height: auto;          /* solta a altura (era 100% no desktop) */
+    object-fit: contain;   /* mostra a imagem inteira, sem cortar */
+    mask-image: none;      /* o degradê de "dissolver" só faz sentido quando a imagem é um fundo grande */
+    -webkit-mask-image: none;
+  }
+
+  .hero-arrow {
+    width: 34px;
+    height: 34px;
   }
 }
 
@@ -326,11 +661,25 @@ body {
   color: var(--cor-branco);   /* texto branco, pois o fundo dos cards é colorido */
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);   /* sombra colorida sutil, dá a sensação de elevação */
   transition: transform 0.2s ease, box-shadow 0.2s ease;   /* anima a mudança, em vez de "pular" de repente */
+  cursor: pointer;   /* agora os cards são clicáveis */
 }
 
 .card:hover {
   transform: translateY(-4px);   /* sobe 4px */
   box-shadow: 0 12px 22px rgba(0, 0, 0, 0.14);   /* sombra maior, reforça a sensação de "levantar" */
+}
+
+/* Foco por teclado (Tab): mesmo efeito do hover, + contorno visível.
+   :focus-visible só aparece pra quem usa teclado, não pra quem clica com o mouse. */
+.card:focus-visible {
+  outline: 2px solid var(--cor-branco);
+  outline-offset: -6px;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.14);
+}
+
+.card:focus {
+  cursor: pointer;
 }
 
 /* Pra quem tem sensibilidade a movimento (configuração de acessibilidade do sistema),
@@ -439,6 +788,10 @@ body {
 
 /* ---------- Celular grande / tablet retrato (telas até 768px) ---------- */
 @media (max-width: 768px) {
+  .sidebar-toggle {
+    display: none;
+  }
+
   .page-layout {
     flex-direction: column;   /* sidebar deixa de ficar do lado, vai pra cima do conteúdo */
     padding: 16px;             /* volta a ter respiro nos dois lados, já que não tem mais sidebar ao lado pra "colar" */
@@ -500,4 +853,30 @@ body {
   .logo-text p {
     display: none;   /* esconde a tagline "Descubra possibilidades..." pra economizar espaço */
   }
+}
+
+/* ==========================================
+   12. TOAST (aviso temporário, tipo "essa página ainda não existe")
+   O JS cria esse elemento dinamicamente e o remove sozinho depois de alguns segundos.
+   ========================================== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(0);
+  background-color: var(--cor-texto);
+  color: var(--cor-branco);
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* O JS adiciona essa classe um instante antes de remover o toast, pra ele sumir suavemente */
+.toast--saindo {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
 }

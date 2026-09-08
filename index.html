@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Norteia - Descubra seu caminho profissional</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,12 +22,58 @@
         </div>
       </div>
       <div class="topbar-actions">
-        <button class="icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button>
-        <button class="icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </button>
+        <!-- Busca: o JS vai adicionar/remover "is-open" aqui pra expandir o campo -->
+        <div class="search-box" id="searchBox">
+          <button class="icon-btn" id="searchToggleBtn" type="button" aria-expanded="false" aria-label="Buscar área profissional">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+          <input type="text" class="search-input" id="searchInput" placeholder="Buscar área..." aria-label="Buscar área profissional">
+        </div>
+
+        <!-- Menu do perfil: o JS vai adicionar/remover a classe "is-open" aqui pra abrir/fechar -->
+        <div class="profile-menu">
+          <button class="profile-btn" id="profileMenuBtn" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="profile-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="profile-dropdown-header">
+              <span class="profile-avatar profile-avatar--small">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span>Olá, perfil1!</span>
+            </div>
+            <ul class="profile-dropdown-list">
+              <li>
+                <a href="#">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  Favoritos
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Conta
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  Configurações
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                  Sair
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -34,13 +81,18 @@
   <div class="page-layout">
 
     <!-- 2. SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
+      <!-- Botão de retrair/expandir: o JS alterna a classe "is-collapsed" aqui na sidebar -->
+      <button class="sidebar-toggle" id="sidebarToggleBtn" type="button" aria-expanded="true" aria-label="Recolher menu lateral">
+        <svg class="sidebar-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
       <nav class="main-nav">
         <ul>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Início</a></li>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> Descobrir</a></li>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A5.5 5.5 0 0 0 4 7.5v0A2.5 2.5 0 0 0 4 12.5 5.5 5.5 0 0 0 9.5 18v2M14.5 2A5.5 5.5 0 0 1 20 7.5v0a2.5 2.5 0 0 1 0 5A5.5 5.5 0 0 1 14.5 18v2M9.5 2h5M9.5 20h5"/></svg> Testes</a></li>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Sobre</a></li>
+          <li><a href="#" class="is-active"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> <span class="nav-label">Início</span></a></li>
+          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> <span class="nav-label">Descobrir</span></a></li>
+          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A5.5 5.5 0 0 0 4 7.5v0A2.5 2.5 0 0 0 4 12.5 5.5 5.5 0 0 0 9.5 18v2M14.5 2A5.5 5.5 0 0 1 20 7.5v0a2.5 2.5 0 0 1 0 5A5.5 5.5 0 0 1 14.5 18v2M9.5 2h5M9.5 20h5"/></svg> <span class="nav-label">Testes</span></a></li>
+          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> <span class="nav-label">Sobre</span></a></li>
         </ul>
       </nav>
 
@@ -53,25 +105,50 @@
 
     <!-- 3. CONTEÚDO PRINCIPAL -->
     <main class="content">
-      <!-- HERO / CARROSSEL: por enquanto só o Slide 1 existe.
-           A estrutura já está pronta para receber mais slides depois
-           (bastaria duplicar .hero-slide e ativar a lógica de troca). -->
-      <section class="hero-carousel">
-        <div class="hero-slide is-active">
+      <!-- HERO / CARROSSEL: agora com 2 slides de verdade.
+           O JS controla qual .hero-slide tem a classe "is-active" (visível). -->
+      <section class="hero-carousel" id="heroCarousel" aria-roledescription="carrossel" aria-label="Destaques">
+
+        <div class="hero-slide is-active" data-slide-index="0">
           <div class="hero-content">
             <h2>Descubra seu caminho profissional</h2>
             <p>Responda nossos testes e explore possibilidades para encontrar as áreas que mais combinam com você.</p>
-
-            <!-- Indicadores de slide: só o 1º ativo por enquanto.
-                 Futuramente: um <span class="hero-indicator"> por slide. -->
-            <div class="hero-indicators">
-              <span class="hero-indicator is-active"></span>
-            </div>
+            <button class="hero-cta" data-action="scroll-cards">Explorar possibilidades</button>
           </div>
-
           <div class="hero-media">
-            <img class="hero-illustration" src="images/hero-slide-1.png" alt="Jovem usando moletom verde, visto de costas, olhando pensativo para uma placa de sinalização com ícones representando diferentes áreas profissionais">
+            <picture>
+              <source srcset="images/banner1.webp" type="image/webp">
+              <img class="hero-illustration" src="images/banner1.webp" alt="Jovem usando moletom verde, visto de costas, olhando pensativo para uma placa de sinalização com ícones representando diferentes áreas profissionais">
+            </picture>
           </div>
+        </div>
+
+        <div class="hero-slide" data-slide-index="1">
+          <div class="hero-content">
+            <h2>Descubra qual carreira tem tudo a ver com você</h2>
+            <p>Responda ao teste vocacional e descubra suas habilidades, interesses e as áreas que mais combinam com o seu perfil.</p>
+            <button class="hero-cta" data-action="teste-vocacional">Fazer teste vocacional</button>
+          </div>
+          <div class="hero-media">
+            <picture>
+              <source srcset="images/banner2.webp" type="image/webp">
+              <img class="hero-illustration" src="images/banner2.webp" alt="Prancheta com lista de tarefas marcadas, cercada por ícones de maleta, saúde, pessoas, microscópio e notebook, ao lado de um alvo com seta no centro e uma pilha de livros, representando um teste vocacional">
+            </picture>
+          </div>
+        </div>
+
+        <!-- Setas de navegação manual -->
+        <button class="hero-arrow hero-arrow--prev" id="heroPrevBtn" type="button" aria-label="Slide anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="hero-arrow hero-arrow--next" id="heroNextBtn" type="button" aria-label="Próximo slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Indicadores (bolinhas), na parte inferior do hero -->
+        <div class="hero-indicators" id="heroIndicators">
+          <button class="hero-indicator is-active" type="button" data-slide-index="0" aria-label="Ir para o slide 1"></button>
+          <button class="hero-indicator" type="button" data-slide-index="1" aria-label="Ir para o slide 2"></button>
         </div>
       </section>
 
@@ -169,6 +246,9 @@
         </article>
       </div>
 
+      <!-- Só aparece quando a busca não encontra nenhum card. O JS controla o atributo "hidden" -->
+      <p class="no-results" id="noResultsMessage" hidden>Nenhuma área encontrada para "<span id="searchTermDisplay"></span>".</p>
+
       <div class="info-bar">
         <p><svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Você pode selecionar mais de uma área. Isso nos ajuda a entender melhor seus interesses!</p>
         <button class="cta-btn">Começar teste →</button>
@@ -177,5 +257,6 @@
 
   </div>
 
+  <script src="js/main.js"></script>
 </body>
 </html>
