@@ -1,4 +1,27 @@
 // ==========================================
+// FUNÇÃO COMPARTILHADA: mostrarToast()
+// ==========================================
+// Fica aqui (fora de qualquer bloco) porque mais de uma funcionalidade
+// usa ela: os botões do hero E os cards de área profissional.
+// Mostra um aviso temporário no canto da tela, útil pra ações que ainda
+// não têm uma página de verdade por trás.
+function mostrarToast(mensagem) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = mensagem;
+  document.body.appendChild(toast);
+
+  // Espera 3 segundos, começa a animação de saída, e só então remove do HTML de vez
+  setTimeout(function () {
+    toast.classList.add('toast--saindo');
+    setTimeout(function () {
+      toast.remove();
+    }, 300);   // 300ms = tempo da transição definida no CSS (.toast--saindo)
+  }, 3000);
+}
+
+
+// ==========================================
 // MENU DO PERFIL (dropdown do header)
 // ==========================================
 //
@@ -169,16 +192,36 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-  sidebarToggleBtn.addEventListener('click', function () {
-    const estaEncolhida = sidebar.classList.toggle('is-collapsed');
-    // classList.toggle() já adiciona OU remove a classe, e devolve true/false
-    // dizendo o resultado — economiza escrever um if/else aqui.
+  const CHAVE_LOCALSTORAGE = 'norteia:sidebarEncolhida';
 
+  function aplicarEstado(estaEncolhida) {
+    sidebar.classList.toggle('is-collapsed', estaEncolhida);
     sidebarToggleBtn.setAttribute('aria-expanded', String(!estaEncolhida));
     sidebarToggleBtn.setAttribute(
       'aria-label',
       estaEncolhida ? 'Expandir menu lateral' : 'Recolher menu lateral'
     );
+  }
+
+  // Ao carregar a página: verifica se tem uma preferência salva de uma visita anterior.
+  // localStorage guarda os dados só nesse navegador/computador (não é um "banco de dados"
+  // de verdade, não sincroniza entre dispositivos nem precisa de servidor).
+  const estadoSalvo = localStorage.getItem(CHAVE_LOCALSTORAGE);
+  if (estadoSalvo === 'true') {
+    // Desliga a transição só nesse primeiro ajuste, pra não "animar" um encolhimento
+    // logo que a página abre — o efeito de slide deve aparecer só em cliques manuais.
+    sidebar.style.transition = 'none';
+    aplicarEstado(true);
+    sidebar.offsetHeight;   // força o navegador a "recalcular" o layout antes de religar a transição
+    sidebar.style.transition = '';
+  }
+
+  sidebarToggleBtn.addEventListener('click', function () {
+    const estaEncolhida = !sidebar.classList.contains('is-collapsed');
+    aplicarEstado(estaEncolhida);
+
+    // Guarda a escolha pra lembrar na próxima vez que a página for aberta
+    localStorage.setItem(CHAVE_LOCALSTORAGE, String(estaEncolhida));
   });
 
 });
@@ -330,19 +373,43 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  function mostrarToast(mensagem) {
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = mensagem;
-    document.body.appendChild(toast);
+});
 
-    // Espera 3 segundos, começa a animação de saída, e só then remove do HTML de vez
-    setTimeout(function () {
-      toast.classList.add('toast--saindo');
-      setTimeout(function () {
-        toast.remove();
-      }, 300);   // 300ms = tempo da transição definida no CSS (.toast--saindo)
-    }, 3000);
-  }
+
+// ==========================================
+// CARDS DE ÁREA PROFISSIONAL (clicáveis)
+// ==========================================
+// As páginas de cada área ainda não existem — mesma lógica do botão
+// "Fazer teste vocacional" do hero: em vez do clique não fazer nada
+// (o que pareceria quebrado, já que os cards têm hover), mostramos um aviso.
+document.addEventListener('DOMContentLoaded', function () {
+
+  const cards = document.querySelectorAll('.cards-grid .card');
+
+  cards.forEach(function (card) {
+    const tituloEl = card.querySelector('h4');
+    const nomeArea = tituloEl ? tituloEl.textContent : 'esta área';
+
+    function abrirArea() {
+      mostrarToast('🚧 Página de "' + nomeArea + '" em construção — em breve por aqui!');
+    }
+
+    // Deixa o card focável e identificável como um "botão" pra quem usa teclado
+    // ou leitor de tela (os cards são <article>, que por padrão não recebem foco)
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'Ver mais sobre ' + nomeArea);
+
+    card.addEventListener('click', abrirArea);
+
+    // Acessibilidade: quem navega só com teclado espera que Enter ou Espaço
+    // ativem um elemento com role="button", do mesmo jeito que um clique
+    card.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();   // evita que Espaço role a página, por exemplo
+        abrirArea();
+      }
+    });
+  });
 
 });

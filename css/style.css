@@ -494,6 +494,12 @@ body {
   pointer-events: none;   /* garante que não atrapalha cliques no texto/botão */
 }
 
+.hero-media picture {
+  display: block;   /* <picture> é inline por padrão — isso garante que ele preencha a .hero-media certinho */
+  width: 100%;
+  height: 100%;
+}
+
 .hero-illustration {
   width: 100%;
   height: 100%;
@@ -655,11 +661,25 @@ body {
   color: var(--cor-branco);   /* texto branco, pois o fundo dos cards é colorido */
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);   /* sombra colorida sutil, dá a sensação de elevação */
   transition: transform 0.2s ease, box-shadow 0.2s ease;   /* anima a mudança, em vez de "pular" de repente */
+  cursor: pointer;   /* agora os cards são clicáveis */
 }
 
 .card:hover {
   transform: translateY(-4px);   /* sobe 4px */
   box-shadow: 0 12px 22px rgba(0, 0, 0, 0.14);   /* sombra maior, reforça a sensação de "levantar" */
+}
+
+/* Foco por teclado (Tab): mesmo efeito do hover, + contorno visível.
+   :focus-visible só aparece pra quem usa teclado, não pra quem clica com o mouse. */
+.card:focus-visible {
+  outline: 2px solid var(--cor-branco);
+  outline-offset: -6px;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.14);
+}
+
+.card:focus {
+  cursor: pointer;
 }
 
 /* Pra quem tem sensibilidade a movimento (configuração de acessibilidade do sistema),
