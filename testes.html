@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Norteia - Teste Vocacional</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/teste.css" />
+</head>
+<body>
+
+  <div class="teste-wrapper">
+
+    <!-- Tela do teste (perguntas) -->
+    <div id="container-teste">
+      <p id="progresso"></p>
+      <h1 id="texto-pergunta"></h1>
+      <div id="area-opcoes"></div>
+      <button id="btn-voltar">&larr; Voltar</button>
+    </div>
+
+    <!-- Tela de resultado (fica escondida até o teste acabar) -->
+    <div id="container-resultado" style="display: none;"></div>
+
+  </div>
+
+  <!-- Ordem importa: primeiro os dados, depois a lógica que os usa -->
+  <script src="js/perguntas-data.js"></script>
+  <script src="js/teste.js"></script>
+</body>
+</html>
