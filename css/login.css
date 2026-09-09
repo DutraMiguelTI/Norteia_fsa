@@ -28,7 +28,7 @@
 
 
 /* ==============================
-   BODY
+   Corpo
    ============================== */
 
 body {
@@ -37,6 +37,8 @@ body {
     background-color: var(--cor-fundo);
 
     color: var(--cor-texto);
+
+    min-height: 100vh;
 }
 
 
@@ -56,7 +58,8 @@ body {
    ============================== */
 
 .login-illustration {
-    width: 50%;
+    width: 54%;
+
     min-height: 100vh;
 
     overflow: hidden;
@@ -69,8 +72,8 @@ body {
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
-    object-position: left center;
+    object-fit: contain;
+    object-position: center;
 
     display: block;
 }
@@ -81,10 +84,12 @@ body {
    ============================== */
 
 .login-area {
-    width: 50%;
+    width: 46%;
+
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
@@ -100,11 +105,12 @@ body {
 
 .login-card {
     width: 100%;
-    max-width: 460px;
+
+    max-width: 615px;
 
     background-color: var(--cor-branco);
 
-    padding: 45px;
+    padding: 55px 45px;
 
     border-radius: 24px;
 
@@ -123,13 +129,13 @@ body {
     justify-content: center;
     align-items: center;
 
-    gap: 8px;
+    gap: 10px;
 
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 
     color: var(--cor-primaria);
 
-    font-size: 28px;
+    font-size: 30px;
 }
 
 
@@ -145,7 +151,7 @@ body {
 .login-card h1 {
     text-align: center;
 
-    font-size: 30px;
+    font-size: 32px;
 
     margin-bottom: 10px;
 }
@@ -158,7 +164,7 @@ body {
 
     font-size: 16px;
 
-    margin-bottom: 35px;
+    margin-bottom: 36px;
 }
 
 
@@ -171,7 +177,7 @@ body {
 
     flex-direction: column;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 
@@ -180,18 +186,22 @@ body {
 
     font-weight: 600;
 
-    margin-bottom: 8px;
+    margin-bottom: 9px;
 }
 
+
+/* ==============================
+   CAMPOS
+   ============================== */
 
 .form-group input {
     width: 100%;
 
-    padding: 14px 15px;
+    padding: 15px 18px;
 
     border: 1px solid var(--cor-borda);
 
-    border-radius: 10px;
+    border-radius: 11px;
 
     font-size: 15px;
 
@@ -211,6 +221,11 @@ body {
 }
 
 
+.form-group input::placeholder {
+    color: #8993a1;
+}
+
+
 /* ==============================
    ESQUECI A SENHA
    ============================== */
@@ -218,9 +233,9 @@ body {
 .forgot-password {
     text-align: right;
 
-    margin-top: -8px;
+    margin-top: -7px;
 
-    margin-bottom: 25px;
+    margin-bottom: 27px;
 }
 
 
@@ -245,11 +260,11 @@ body {
 .login-card button {
     width: 100%;
 
-    padding: 14px;
+    padding: 15px;
 
     border: none;
 
-    border-radius: 10px;
+    border-radius: 11px;
 
     background-color: var(--cor-primaria);
 
@@ -286,7 +301,11 @@ body {
 
     gap: 5px;
 
-    margin-top: 30px;
+    margin-top: 36px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--cor-borda);
 
     font-size: 14px;
 
@@ -325,7 +344,7 @@ body {
     }
 
     .login-card {
-        padding: 35px;
+        padding: 40px 30px;
     }
 }
 
@@ -360,7 +379,7 @@ body {
 
 
     .login-card {
-        padding: 30px 25px;
+        padding: 35px 25px;
     }
 
 
