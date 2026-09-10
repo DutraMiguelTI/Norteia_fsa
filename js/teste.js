@@ -182,6 +182,5 @@ function calcularEExibirResultado() {
       não um diagnóstico definitivo da sua profissão ideal.
     </p>
   `;
-}
-
+}   
 renderizarPergunta();

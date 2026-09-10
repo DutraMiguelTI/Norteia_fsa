@@ -132,3 +132,97 @@
   font-size: 13px;
   color: #888;
 }
+
+/* ===================== TELA DE INTRODUÇÃO ===================== */
+.intro-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  text-align: left;
+}
+
+.intro-selo {
+  font-size: 32px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eafaf1;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.intro-card h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.intro-descricao {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.intro-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.badge {
+  background: #f2f4f7;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.intro-dicas {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
+}
+.intro-dicas li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #444;
+}
+.intro-dicas li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2E8B57;
+  font-weight: bold;
+}
+
+.btn-comecar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2E8B57;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.btn-comecar:hover {
+  background: #256e46;
+}
+
+/* garante que o botão funcione bem tanto como <button> quanto como <a> */
+a.btn-comecar {
+  text-decoration: none;
+}
