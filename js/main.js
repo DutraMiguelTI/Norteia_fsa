@@ -230,16 +230,26 @@ document.addEventListener('DOMContentLoaded', function () {
 // ==========================================
 // ITEM ATIVO DO MENU LATERAL
 // ==========================================
-// Como as próximas páginas ainda não existem, os links são só "#" por enquanto.
-// Aqui a gente simula visualmente a navegação: ao clicar, aquele item fica
-// verde (como o "Início" já ficava por padrão), e os outros voltam ao normal.
+// Como nem toda página existe ainda, alguns links continuam sendo só "#" —
+// pra esses, a gente simula visualmente a navegação (o item fica verde).
+// Mas se o link já tem um destino real (como "Testes" agora tem), a gente
+// deixa o navegador seguir o link normalmente, sem interceptar.
 document.addEventListener('DOMContentLoaded', function () {
 
   const linksDoMenu = document.querySelectorAll('.main-nav a');
 
   linksDoMenu.forEach(function (link) {
     link.addEventListener('click', function (event) {
-      // Impede o navegador de "pular" pro topo da página (comportamento padrão de href="#")
+      const ehLinkPlaceholder = link.getAttribute('href') === '#';
+
+      if (!ehLinkPlaceholder) {
+        // Link de verdade (ex: "teste-intro.html") — deixa o navegador navegar.
+        // Não precisamos mexer na classe "is-active" aqui: a página vai mudar
+        // de qualquer forma, então esse estado visual deixa de importar.
+        return;
+      }
+
+      // A partir daqui, só roda pra links que ainda são "#" (placeholder)
       event.preventDefault();
 
       // Tira o destaque de QUALQUER link que estava ativo antes...
@@ -366,9 +376,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (acao === 'teste-vocacional') {
-        // Essa página ainda não existe no projeto — em vez de não fazer nada
-        // (o que pareceria um botão quebrado), avisamos a pessoa com um toast.
-        mostrarToast('🚧 Teste vocacional em construção — em breve por aqui!');
+        // A página já existe agora — navega de verdade em vez de mostrar o aviso
+        window.location.href = 'teste-intro.html';
       }
     });
   });
@@ -410,6 +419,24 @@ document.addEventListener('DOMContentLoaded', function () {
         abrirArea();
       }
     });
+  });
+
+});
+
+
+// ==========================================
+// BOTÃO "COMEÇAR TESTE" (barra inferior)
+// ==========================================
+document.addEventListener('DOMContentLoaded', function () {
+
+  const startTestBtn = document.getElementById('startTestBtn');
+
+  if (!startTestBtn) {
+    return;
+  }
+
+  startTestBtn.addEventListener('click', function () {
+    window.location.href = 'teste-intro.html';
   });
 
 });
