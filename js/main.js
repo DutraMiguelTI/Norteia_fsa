@@ -388,20 +388,68 @@ document.addEventListener('DOMContentLoaded', function () {
 // ==========================================
 // CARDS DE ÁREA PROFISSIONAL (clicáveis)
 // ==========================================
-// As páginas de cada área ainda não existem — mesma lógica do botão
-// "Fazer teste vocacional" do hero: em vez do clique não fazer nada
-// (o que pareceria quebrado, já que os cards têm hover), mostramos um aviso.
+// Cada card, ao ser clicado, abre um modal com uma descrição detalhada
+// daquela área. O modal é um só (fica no fim do <main>, no HTML) — aqui a
+// gente só troca o conteúdo dele de acordo com o card clicado.
 document.addEventListener('DOMContentLoaded', function () {
 
   const cards = document.querySelectorAll('.cards-grid .card');
 
+  const overlay = document.getElementById('areaModalOverlay');
+  const modalIcon = document.getElementById('areaModalIcon');
+  const modalTitulo = document.getElementById('areaModalTitulo');
+  const modalTexto = document.getElementById('areaModalTexto');
+  const botaoFechar = document.getElementById('areaModalFechar');
+
+  // Descrição detalhada de cada área, pelo mesmo "slug" usado no atributo
+  // data-area do card. Pra mudar o texto de uma área específica, é só
+  // editar a string correspondente aqui.
+  const DESCRICOES_DETALHADAS = {
+    'saude-bem-estar': 'A área de Saúde e Bem-estar reúne profissões dedicadas a cuidar da vida e da qualidade de vida das pessoas, física e mentalmente. Inclui cursos como Medicina, Enfermagem, Fisioterapia e Nutrição. Combina muito com quem gosta de cuidar de outras pessoas, tem empatia e curiosidade pelo funcionamento do corpo humano, e se sente bem trabalhando em contato direto com o público.',
+    'tecnologia-inovacao': 'Tecnologia e Inovação reúne quem gosta de resolver problemas com lógica, criatividade e ferramentas digitais. Inclui cursos como Ciência da Computação, Sistemas de Informação, Engenharia de Software e Análise de Dados. Combina com quem curte quebrar a cabeça com desafios lógicos, aprender coisas novas o tempo todo e criar soluções que impactam o dia a dia de muita gente.',
+    'negocios-gestao': 'Negócios e Gestão reúne quem gosta de organizar processos, liderar pessoas e pensar estrategicamente sobre como uma empresa ou projeto funciona. Inclui cursos como Administração, Economia e Ciências Contábeis. Combina com quem se sente confortável tomando decisões, gosta de números e enxerga oportunidades onde outros veem só problemas.',
+    'direito-justica': 'Direito e Justiça reúne quem se interessa por leis, ética e pela defesa de direitos, seja de pessoas, seja de instituições. O curso de Direito é a porta de entrada mais direta, com atuação possível em áreas como advocacia, magistratura e ministério público. Combina com quem gosta de argumentar, tem senso crítico apurado e se preocupa com justiça e cidadania.',
+    'engenharia-construcao': 'Engenharia e Construção reúne quem gosta de projetar, calcular e transformar ideias em estruturas reais, de prédios a máquinas. Inclui cursos como Engenharia Civil, Mecânica e de Produção. Combina com quem tem raciocínio lógico-matemático forte, gosta de resolver problemas práticos e se interessa por como as coisas são construídas e funcionam.',
+    'artes-design': 'Artes e Design reúne quem tem sensibilidade estética e gosta de se expressar visualmente. Inclui cursos como Design Gráfico, Design de Moda e Artes Visuais. Combina com quem enxerga o mundo de um jeito criativo, gosta de experimentar formas, cores e estilos, e busca transformar ideias abstratas em algo visual e concreto.',
+    'comunicacao-marketing': 'Comunicação e Marketing reúne quem gosta de se conectar com pessoas, contar histórias e transmitir ideias de forma clara e persuasiva. Inclui cursos como Publicidade e Propaganda, Jornalismo e Marketing. Combina com quem tem facilidade de se expressar, é curioso sobre comportamento humano e gosta de criar conteúdo que engaje outras pessoas.',
+    'educacao': 'Educação reúne quem tem vocação para ensinar, formar e inspirar outras pessoas. Inclui licenciaturas como Pedagogia, Letras e Matemática. Combina com quem tem paciência, gosta de explicar as coisas de formas diferentes até fazerem sentido, e se realiza vendo o progresso de quem está aprendendo.',
+    'psicologia-comportamento': 'Psicologia e Comportamento reúne quem se interessa por entender como as pessoas pensam, sentem e se relacionam. O curso de Psicologia é o principal caminho, com atuação em clínicas, empresas, escolas e hospitais. Combina com quem é bom ouvinte, tem empatia e curiosidade genuína pelo funcionamento da mente humana.',
+    'meio-ambiente': 'Meio Ambiente reúne quem se preocupa com sustentabilidade e com o futuro dos recursos naturais do planeta. Inclui cursos como Engenharia Ambiental e Gestão Ambiental. Combina com quem tem consciência ecológica, gosta de ciências naturais e quer atuar em soluções para problemas ambientais reais.',
+    'ciencias-exatas': 'Ciências Exatas reúne quem gosta de números, lógica e resolução de problemas complexos e abstratos. Inclui cursos como Matemática, Física e Estatística. Combina com quem tem raciocínio analítico apurado, gosta de desafios que exigem concentração e se interessa por entender os padrões por trás dos fenômenos.',
+    'ciencias-biologicas': 'Ciências Biológicas reúne quem se interessa pela vida, pelos seres vivos e pela investigação científica. Inclui cursos como Biologia, Biomedicina e Farmácia. Combina com quem gosta de observar, experimentar e entender processos naturais, com atenção a detalhes e curiosidade científica.',
+    'relacoes-internacionais': 'Relações Internacionais reúne quem se interessa por política global, diplomacia e diversidade cultural. O curso de Relações Internacionais é o principal caminho, com atuação em organismos internacionais, diplomacia e comércio exterior. Combina com quem gosta de acompanhar notícias do mundo, é curioso sobre outras culturas e tem facilidade com idiomas.',
+    'servicos-hospitalidade': 'Serviços e Hospitalidade reúne quem gosta de atender pessoas e proporcionar boas experiências. Inclui cursos como Hotelaria, Turismo e Gastronomia. Combina com quem é comunicativo, tem atenção aos detalhes e se realiza fazendo o outro se sentir bem cuidado.',
+    'esportes-bem-estar': 'Esportes e Bem-estar reúne quem valoriza o movimento do corpo, a saúde e a qualidade de vida através da atividade física. Inclui cursos como Educação Física e Esporte. Combina com quem gosta de esportes, tem disposição física e quer ajudar outras pessoas a criar hábitos mais saudáveis e ativos.'
+  };
+
+  function abrirModal(card) {
+    const tituloEl = card.querySelector('h4');
+    const iconeEl = card.querySelector('.card-icon');
+    const slug = card.getAttribute('data-area');
+    const nomeArea = tituloEl ? tituloEl.textContent : 'esta área';
+    const textoDetalhado = DESCRICOES_DETALHADAS[slug] || 'Descrição detalhada em breve.';
+
+    modalTitulo.textContent = nomeArea;
+    modalTexto.textContent = textoDetalhado;
+
+    // Copia o mesmo ícone e a mesma cor de fundo do card pro selo do modal,
+    // em vez de duplicar todos os SVGs e cores aqui no JS
+    if (iconeEl) {
+      modalIcon.innerHTML = iconeEl.innerHTML;
+    }
+    modalIcon.style.backgroundColor = window.getComputedStyle(card).backgroundColor;
+
+    overlay.hidden = false;
+    botaoFechar.focus();   // já deixa o foco no botão de fechar, pra quem usa teclado
+  }
+
+  function fecharModal() {
+    overlay.hidden = true;
+  }
+
   cards.forEach(function (card) {
     const tituloEl = card.querySelector('h4');
     const nomeArea = tituloEl ? tituloEl.textContent : 'esta área';
-
-    function abrirArea() {
-      mostrarToast('🚧 Página de "' + nomeArea + '" em construção — em breve por aqui!');
-    }
 
     // Deixa o card focável e identificável como um "botão" pra quem usa teclado
     // ou leitor de tela (os cards são <article>, que por padrão não recebem foco)
@@ -409,16 +457,33 @@ document.addEventListener('DOMContentLoaded', function () {
     card.setAttribute('role', 'button');
     card.setAttribute('aria-label', 'Ver mais sobre ' + nomeArea);
 
-    card.addEventListener('click', abrirArea);
+    card.addEventListener('click', function () {
+      abrirModal(card);
+    });
 
     // Acessibilidade: quem navega só com teclado espera que Enter ou Espaço
     // ativem um elemento com role="button", do mesmo jeito que um clique
     card.addEventListener('keydown', function (event) {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();   // evita que Espaço role a página, por exemplo
-        abrirArea();
+        abrirModal(card);
       }
     });
+  });
+
+  // Fechar o modal: no X, clicando fora dele (no overlay escuro) ou com Esc
+  botaoFechar.addEventListener('click', fecharModal);
+
+  overlay.addEventListener('click', function (event) {
+    if (event.target === overlay) {
+      fecharModal();
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && !overlay.hidden) {
+      fecharModal();
+    }
   });
 
 });

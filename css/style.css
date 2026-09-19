@@ -732,6 +732,96 @@ body {
 .card-purple2   { background-color: #7c3aed; }
 
 /* ==========================================
+   9.1 MODAL DE DESCRIÇÃO DA ÁREA
+   Abre por cima da página quando um card é clicado.
+   ========================================== */
+.area-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+}
+
+/* Sem essa regra, o "display: flex" acima tem a mesma prioridade do
+   estilo padrão do navegador pro atributo [hidden] — e como vem depois
+   no arquivo, ele vence. Resultado: o modal ficava sempre visível,
+   mesmo com hidden="true", e o botão de fechar parecia não funcionar. */
+.area-modal-overlay[hidden] {
+  display: none;
+}
+
+.area-modal {
+  position: relative;
+  background-color: var(--cor-branco);
+  border-radius: 16px;
+  padding: 36px 32px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.area-modal-fechar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-suave);
+  cursor: pointer;
+}
+
+.area-modal-fechar:hover {
+  background-color: var(--cor-borda);
+  color: var(--cor-texto);
+}
+
+.area-modal-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  color: var(--cor-branco);
+  margin-bottom: 16px;
+}
+
+.area-modal-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.area-modal h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.area-modal p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--cor-texto-suave);
+}
+
+/* Celular: modal ocupa mais largura disponível e encosta menos nas bordas */
+@media (max-width: 640px) {
+  .area-modal {
+    padding: 28px 22px;
+  }
+}
+
+/* ==========================================
    10. BARRA INFERIOR (aviso + botão "Começar teste")
    ========================================== */
 .info-bar {
