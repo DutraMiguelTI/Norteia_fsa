@@ -47,7 +47,7 @@
 
 
                 <!-- Título -->
-                <h1>Bem-vindo de volta!</h1>
+                <h1>Bem-vindo!</h1>
 
                 <p class="login-subtitle">
                     Entre na sua conta para continuar.
@@ -58,7 +58,7 @@
                      FORMULÁRIO DE LOGIN
                      ============================== -->
 
-                <form id="login-form">
+                <form id="login-form" novalidate>
 
                     <!-- E-mail -->
                     <div class="form-group">
@@ -79,6 +79,12 @@
                             >
 
                         </div>
+
+                        <!-- Mensagem de erro do e-mail -->
+                        <p
+                            id="erro-email"
+                            class="mensagem-erro"
+                        ></p>
 
                     </div>
 
@@ -102,6 +108,12 @@
                             >
 
                         </div>
+
+                        <!-- Mensagem de erro da senha -->
+                        <p
+                            id="erro-senha"
+                            class="mensagem-erro"
+                        ></p>
 
                     </div>
 
@@ -159,8 +171,6 @@
 
     <!-- Sistema de login -->
     <script src="js/login.js"></script>
-
-  
 
 </body>
 

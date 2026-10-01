@@ -387,3 +387,42 @@ body {
         font-size: 25px;
     }
 }
+
+
+/* ==============================
+   MENSAGENS DE ERRO
+   ============================== */
+
+.mensagem-erro {
+    color: #dc2626;
+
+    font-size: 13px;
+
+    margin-top: 6px;
+
+    margin-bottom: 0;
+}
+
+
+/* ==============================
+   CAMPO COM ERRO
+   ============================== */
+
+.form-group input.erro {
+    border-color: #dc2626;
+
+    box-shadow:
+        0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+
+/* ==============================
+   CAMPO COM ERRO EM FOCO
+   ============================== */
+
+.form-group input.erro:focus {
+    border-color: #dc2626;
+
+    box-shadow:
+        0 0 0 3px rgba(220, 38, 38, 0.1);
+}
