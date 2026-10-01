@@ -13,17 +13,90 @@ loginForm.addEventListener('submit', async function (event) {
 
 
     // ==============================
+    // PEGAR OS CAMPOS
+    // ==============================
+
+    const emailInput = document.getElementById('email');
+    const senhaInput = document.getElementById('senha');
+
+
+    // ==============================
     // PEGAR OS DADOS
     // ==============================
 
-    const email = document
-        .getElementById('email')
-        .value
-        .trim();
+    const email = emailInput.value.trim();
 
-    const senha = document
-        .getElementById('senha')
-        .value;
+    const senha = senhaInput.value;
+
+
+    // ==============================
+    // PEGAR MENSAGENS DE ERRO
+    // ==============================
+
+    const erroEmail = document.getElementById('erro-email');
+    const erroSenha = document.getElementById('erro-senha');
+
+
+    // ==============================
+    // LIMPAR ERROS ANTERIORES
+    // ==============================
+
+    erroEmail.textContent = '';
+    erroSenha.textContent = '';
+
+    emailInput.classList.remove('erro');
+    senhaInput.classList.remove('erro');
+
+
+    // ==============================
+    // VERIFICAR E-MAIL VAZIO
+    // ==============================
+
+    if (email === '') {
+
+        erroEmail.textContent =
+            'Digite seu e-mail.';
+
+        emailInput.classList.add('erro');
+
+        emailInput.focus();
+
+        return;
+    }
+
+
+    // ==============================
+    // VERIFICAR FORMATO DO E-MAIL
+    // ==============================
+
+    if (!emailInput.validity.valid) {
+
+        erroEmail.textContent =
+            'O e-mail está inválido.';
+
+        emailInput.classList.add('erro');
+
+        emailInput.focus();
+
+        return;
+    }
+
+
+    // ==============================
+    // VERIFICAR SENHA VAZIA
+    // ==============================
+
+    if (senha === '') {
+
+        erroSenha.textContent =
+            'Digite sua senha.';
+
+        senhaInput.classList.add('erro');
+
+        senhaInput.focus();
+
+        return;
+    }
 
 
     // ==============================
@@ -48,10 +121,12 @@ loginForm.addEventListener('submit', async function (event) {
 
         console.error('Erro no login:', error);
 
-        alert(
-            'Não foi possível entrar.\n\n' +
-            error.message
-        );
+        erroSenha.textContent =
+            'E-mail ou senha incorretos.';
+
+        senhaInput.classList.add('erro');
+
+        senhaInput.focus();
 
         return;
     }
@@ -62,8 +137,6 @@ loginForm.addEventListener('submit', async function (event) {
     // ==============================
 
     console.log('Login realizado:', data);
-
-    alert('Login realizado com sucesso!');
 
 
     // Ir para a página principal
