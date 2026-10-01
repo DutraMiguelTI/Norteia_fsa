@@ -86,6 +86,24 @@ body {
 /* ==========================================
    4.1 MENU DO PERFIL (dropdown)
    ========================================== */
+.login-btn {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 20px;
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.login-btn:hover {
+  background-color: #17845d;   /* mesmo verde escuro usado no hover do botão do login.css do seu amigo */
+}
+
 .profile-menu {
   position: relative;   /* "âncora": é em relação a essa caixa que o dropdown vai se posicionar */
 }
