@@ -388,6 +388,12 @@ body {
   color: var(--cor-texto-suave);
   font-weight: 500;
   font-size: 15px;
+  transition: background-color 0.15s ease;   /* o fundo "acompanha o mouse" suavemente, em vez de trocar seco */
+}
+
+/* Mesma ideia do hover do dropdown do perfil: um fundo clarinho ao passar o mouse */
+.main-nav a:hover {
+  background-color: var(--cor-fundo);
 }
 
 .nav-icon {
@@ -402,6 +408,12 @@ body {
   background-color: var(--cor-primaria-clara);
   color: var(--cor-primaria);
   font-weight: 600;
+}
+
+/* Precisa dessa regra à parte: ".is-active" e ":hover" têm a MESMA "força" (especificidade)
+   no CSS, então sem isso, passar o mouse no item ativo trocaria o verde pelo cinza do hover. */
+.main-nav a.is-active:hover {
+  background-color: var(--cor-primaria-clara);
 }
 
 .help-card {
