@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Responda a atividades relacionadas às subáreas de uma área profissional e compare suas afinidades." />
+  <title>Norteia - Aprofundamento por área</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/teste.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-area logo-home" href="index.html" aria-label="Norteia, voltar ao início">
+        <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+        <span class="logo-text"><strong>Norteia</strong><span>Descubra possibilidades. Encontre seu caminho.</span></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Navegação da página">
+        <a id="link-voltar-resultado" class="header-link" href="testes.html">Voltar ao resultado</a>
+      </nav>
+    </div>
+  </header>
+  <div class="teste-wrapper">
+    <main>
+      <section id="container-teste-area" class="pergunta-card">
+        <p class="intro-etiqueta">Aprofundamento por área</p>
+        <h1 id="titulo-area">Carregando área...</h1>
+        <p class="instrucao-resposta">Avalie o quanto cada atividade desperta seu interesse, mesmo que você ainda não tenha experiência nela.</p>
+
+        <div id="barra-progresso-area" class="barra-progresso" role="progressbar" aria-label="Progresso do teste da área" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0">
+          <div id="barra-preenchida-area" class="barra-preenchida" aria-hidden="true"></div>
+        </div>
+        <p id="progresso-area" aria-live="polite"></p>
+        <h2 id="texto-atividade" class="pergunta-area" aria-live="polite"></h2>
+        <div id="opcoes-area" role="group" aria-labelledby="texto-atividade"></div>
+
+        <div class="acoes-pergunta">
+          <button id="btn-voltar-area" type="button">&larr; Voltar</button>
+          <button id="btn-confirmar-area" type="button" class="btn-confirmar" disabled>Confirmar e avançar &rarr;</button>
+        </div>
+      </section>
+
+      <section id="resultado-area" class="resultado-card" aria-live="polite" hidden></section>
+      <section id="erro-area" class="resultado-card" aria-live="polite" hidden>
+        <h1>Não encontramos essa área</h1>
+        <p class="intro-descricao">Volte ao resultado geral e escolha uma das áreas disponíveis para fazer o aprofundamento.</p>
+        <a class="btn-confirmar link-botao" href="testes.html">Ir para o teste geral</a>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/perguntas-data.js"></script>
+  <script src="js/perguntas-detalhadas.js"></script>
+  <script src="js/teste-area.js"></script>
+</body>
+</html>

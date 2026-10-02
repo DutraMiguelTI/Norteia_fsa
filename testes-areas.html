@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore as áreas profissionais da Norteia, conheça seus caminhos e inicie um teste de afinidade." />
+  <title>Norteia - Testes por área</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/teste.css" />
+  <link rel="stylesheet" href="css/testes-areas.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-area logo-home" href="index.html" aria-label="Norteia, voltar ao início">
+        <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+        <span class="logo-text"><strong>Norteia</strong><span>Descubra possibilidades. Encontre seu caminho.</span></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Navegação da página">
+        <a class="header-link" href="index.html#areas-profissionais">Explorar</a>
+      </nav>
+    </div>
+  </header>
+  <div class="catalogo-wrapper">
+    <main>
+      <section class="catalogo-intro">
+        <p class="catalogo-eyebrow">Escolha por onde explorar</p>
+        <h1>Testes por área profissional</h1>
+        <p>Conheça as possibilidades de cada área ou responda a atividades para descobrir quais subáreas despertam mais seu interesse.</p>
+        <a class="catalogo-geral" href="teste-intro.html">Ainda não sabe qual área escolher? Faça o teste geral <span aria-hidden="true">→</span></a>
+      </section>
+
+      <ol id="lista-areas-teste" class="catalogo-lista" aria-label="Áreas profissionais disponíveis"></ol>
+    </main>
+  </div>
+
+  <script src="js/perguntas-data.js"></script>
+  <script src="js/areas-info.js"></script>
+  <script src="js/testes-areas.js"></script>
+</body>
+</html>

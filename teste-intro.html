@@ -1,41 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conheça o questionário de afinidade profissional da Norteia antes de começar." />
   <title>Norteia - Antes de começar</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/teste.css" />
 </head>
 <body>
-
-  <div class="teste-wrapper">
-    <div class="intro-card">
-      <div class="intro-selo">🧭</div>
-      <h1>Vamos descobrir seu caminho profissional?</h1>
-      <p class="intro-descricao">
-        Você vai responder afirmações rápidas sobre como pensa, age e o que te
-        interessa. No final, mostramos as áreas profissionais com maior
-        afinidade com você — e, dentro da área principal, os caminhos mais
-        específicos para você explorar.
-      </p>
-
-      <div class="intro-badges">
-        <span class="badge">⏱️ ~5 minutos</span>
-        <span class="badge">📝 até 34 perguntas</span>
-        <span class="badge">🎯 2 etapas</span>
-      </div>
-
-      <ul class="intro-dicas">
-        <li>Não existe resposta certa ou errada.</li>
-        <li>Responda pensando em como você realmente é, não em como gostaria de ser.</li>
-        <li>Você pode voltar e mudar uma resposta a qualquer momento.</li>
-      </ul>
-
-      <!-- Isso aqui é só um link normal de HTML, sem precisar de JavaScript -->
-      <a href="testes.html" class="btn-comecar">Começar teste &rarr;</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-area logo-home" href="index.html" aria-label="Norteia, voltar ao início">
+        <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+        <span class="logo-text"><strong>Norteia</strong><span>Descubra possibilidades. Encontre seu caminho.</span></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Navegação da página">
+        <a class="header-link" href="testes-areas.html">Testes por área</a>
+      </nav>
     </div>
-  </div>
+  </header>
+  <div class="teste-wrapper">
+    <main>
+      <section class="intro-card">
+        <p class="intro-etiqueta">Exploração profissional</p>
+        <h1>Descubra quais caminhos despertam sua curiosidade.</h1>
+        <p class="intro-descricao">
+          O questionário reúne 90 afirmações distribuídas por 15 áreas de atuação.
+          Reserve cerca de 10 a 15 minutos e responda pensando no quanto cada afirmação combina com você.
+        </p>
 
+        <div class="intro-badges" aria-label="Informações do questionário">
+          <span class="badge">90 afirmações</span>
+          <span class="badge">15 áreas</span>
+          <span class="badge">10–15 min</span>
+        </div>
+
+        <h2>Antes de responder</h2>
+        <ul class="intro-dicas">
+          <li>Não há respostas certas ou erradas; marque o que realmente combina com você.</li>
+          <li>Considere seus interesses, mesmo que ainda não tenha experiência na área.</li>
+          <li>O resultado é exploratório e serve como ponto de partida para conversar sobre possibilidades.</li>
+        </ul>
+
+        <a href="testes.html?refazer=1" class="btn-comecar">Começar questionário <span aria-hidden="true">→</span></a>
+        <p class="intro-aviso">A Norteia não aplica um teste psicométrico validado nem substitui orientação profissional.</p>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
 

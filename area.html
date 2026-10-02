@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conheça uma área profissional e explore as possibilidades de atuação antes de fazer o teste de afinidade." />
+  <title>Norteia - Conheça uma área</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/teste.css" />
+  <link rel="stylesheet" href="css/area.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-area logo-home" href="index.html" aria-label="Norteia, voltar ao início">
+        <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+        <span class="logo-text"><strong>Norteia</strong><span>Descubra possibilidades. Encontre seu caminho.</span></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Navegação da página">
+        <a class="header-link" href="testes-areas.html">Todas as áreas</a>
+      </nav>
+    </div>
+  </header>
+  <div class="area-wrapper">
+    <main>
+      <div id="area-nao-encontrada" class="area-erro" hidden>
+        <h1>Não encontramos essa área</h1>
+        <p>Volte à lista de áreas para escolher uma opção disponível.</p>
+        <a class="btn-comecar" href="testes-areas.html">Ver áreas profissionais</a>
+      </div>
+
+      <div id="apresentacao-area" class="area-surface" hidden>
+        <section class="area-hero">
+          <div class="area-hero-copy">
+            <p class="area-eyebrow">Explore uma possibilidade profissional</p>
+            <h1 id="nome-area"></h1>
+            <p id="resumo-area" class="area-resumo"></p>
+          </div>
+          <div class="area-hero-media">
+            <img src="images/hero-slide-1.png" alt="Pessoa explorando diferentes caminhos profissionais em uma placa de sinalização" />
+          </div>
+        </section>
+
+        <section class="area-contexto" aria-labelledby="titulo-contexto">
+          <div>
+            <p class="area-eyebrow">Como essa área aparece no trabalho</p>
+            <h2 id="titulo-contexto">Diferentes formas de contribuir</h2>
+          </div>
+          <p id="contexto-area"></p>
+        </section>
+
+        <section class="area-frentes" aria-labelledby="titulo-frentes">
+          <h2 id="titulo-frentes">O que você pode encontrar por aqui</h2>
+          <ul id="lista-frentes" class="lista-frentes"></ul>
+        </section>
+
+        <section class="area-subareas" aria-labelledby="titulo-subareas">
+          <div class="subareas-cabecalho">
+            <div>
+              <p class="area-eyebrow">Possibilidades dentro da área</p>
+              <h2 id="titulo-subareas">Conheça algumas subáreas</h2>
+            </div>
+            <p>Veja exemplos de atividades para entender o tipo de trabalho que pode fazer parte de cada caminho.</p>
+          </div>
+          <ul id="lista-subareas" class="lista-subareas"></ul>
+        </section>
+
+        <section class="area-convite" aria-labelledby="titulo-convite">
+          <div>
+            <p class="area-eyebrow">Descubra seus interesses</p>
+            <h2 id="titulo-convite">Qual desses caminhos combina mais com você?</h2>
+            <p>Responda a situações de trabalho e compare seu interesse pelas atividades de cada subárea.</p>
+          </div>
+          <a id="btn-iniciar-area" class="btn-comecar" href="#">Iniciar teste desta área <span aria-hidden="true">→</span></a>
+        </section>
+
+        <p class="area-aviso">As atividades são exemplos para exploração. O teste é indicativo e não substitui pesquisa sobre cursos, profissões ou orientação profissional.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/perguntas-data.js"></script>
+  <script src="js/perguntas-detalhadas.js"></script>
+  <script src="js/areas-info.js"></script>
+  <script src="js/area.js"></script>
+</body>
+</html>
