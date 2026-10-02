@@ -86,6 +86,31 @@ body {
 /* ==========================================
    4.1 MENU DO PERFIL (dropdown)
    ========================================== */
+.login-btn {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 20px;
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Precisa disso explicitamente: sem essa regra, o "display: flex" acima
+   sempre vence a regra interna do navegador que esconde elementos com
+   o atributo "hidden" — então o JS escondia, mas nada acontecia na tela. */
+.login-btn[hidden] {
+  display: none;
+}
+
+.login-btn:hover {
+  background-color: #17845d;   /* mesmo verde escuro usado no hover do botão do login.css do seu amigo */
+}
+
 .profile-menu {
   position: relative;   /* "âncora": é em relação a essa caixa que o dropdown vai se posicionar */
 }
@@ -198,6 +223,20 @@ body {
   height: 16px;
   color: var(--cor-texto-suave);
   flex-shrink: 0;
+}
+
+/* "Sair" em vermelho — e o ícone junto, senão fica com texto vermelho
+   e ícone cinza, que destoa visualmente */
+#logoutBtn {
+  color: #d32f2f;
+}
+
+#logoutBtn svg {
+  color: #d32f2f;
+}
+
+#logoutBtn:hover {
+  background-color: #fdecea;   /* um vermelho bem clarinho, mesma ideia do hover cinza dos outros itens */
 }
 
 /* ==========================================
@@ -349,6 +388,12 @@ body {
   color: var(--cor-texto-suave);
   font-weight: 500;
   font-size: 15px;
+  transition: background-color 0.15s ease;   /* o fundo "acompanha o mouse" suavemente, em vez de trocar seco */
+}
+
+/* Mesma ideia do hover do dropdown do perfil: um fundo clarinho ao passar o mouse */
+.main-nav a:hover {
+  background-color: var(--cor-fundo);
 }
 
 .nav-icon {
@@ -363,6 +408,12 @@ body {
   background-color: var(--cor-primaria-clara);
   color: var(--cor-primaria);
   font-weight: 600;
+}
+
+/* Precisa dessa regra à parte: ".is-active" e ":hover" têm a MESMA "força" (especificidade)
+   no CSS, então sem isso, passar o mouse no item ativo trocaria o verde pelo cinza do hover. */
+.main-nav a.is-active:hover {
+  background-color: var(--cor-primaria-clara);
 }
 
 .help-card {

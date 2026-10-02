@@ -30,8 +30,13 @@
           <input type="text" class="search-input" id="searchInput" placeholder="Buscar área..." aria-label="Buscar área profissional">
         </div>
 
-        <!-- Menu do perfil: o JS vai adicionar/remover a classe "is-open" aqui pra abrir/fechar -->
-        <div class="profile-menu">
+        <!-- Botão de "Entrar": começa escondido. O js/auth.js decide, ao carregar a página,
+             se mostra ESSE botão (visitante) ou o .profile-menu abaixo (logado) -->
+        <a href="login.html" class="login-btn" id="loginBtn" hidden>Entrar</a>
+
+        <!-- Menu do perfil: o JS vai adicionar/remover a classe "is-open" aqui pra abrir/fechar.
+             Começa escondido pelo mesmo motivo do botão "Entrar" acima. -->
+        <div class="profile-menu" id="profileMenu" hidden>
           <button class="profile-btn" id="profileMenuBtn" type="button" aria-haspopup="true" aria-expanded="false">
             <span class="profile-avatar">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -44,7 +49,7 @@
               <span class="profile-avatar profile-avatar--small">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </span>
-              <span>Olá, perfil1!</span>
+              <span id="profileUserName">Olá, perfil1!</span>
             </div>
             <ul class="profile-dropdown-list">
               <li>
@@ -66,7 +71,7 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="#" id="logoutBtn">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                   Sair
                 </a>
@@ -91,7 +96,7 @@
         <ul>
           <li><a href="#" class="is-active"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> <span class="nav-label">Início</span></a></li>
           <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> <span class="nav-label">Descobrir</span></a></li>
-          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A5.5 5.5 0 0 0 4 7.5v0A2.5 2.5 0 0 0 4 12.5 5.5 5.5 0 0 0 9.5 18v2M14.5 2A5.5 5.5 0 0 1 20 7.5v0a2.5 2.5 0 0 1 0 5A5.5 5.5 0 0 1 14.5 18v2M9.5 2h5M9.5 20h5"/></svg> <span class="nav-label">Testes</span></a></li>
+          <li><a href="teste-intro.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A5.5 5.5 0 0 0 4 7.5v0A2.5 2.5 0 0 0 4 12.5 5.5 5.5 0 0 0 9.5 18v2M14.5 2A5.5 5.5 0 0 1 20 7.5v0a2.5 2.5 0 0 1 0 5A5.5 5.5 0 0 1 14.5 18v2M9.5 2h5M9.5 20h5"/></svg> <span class="nav-label">Testes</span></a></li>
           <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> <span class="nav-label">Sobre</span></a></li>
         </ul>
       </nav>
@@ -99,7 +104,7 @@
       <div class="help-card">
         <h3><svg class="help-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg> Ainda em dúvida?</h3>
         <p>Faça nossos testes e descubra suas melhores combinações.</p>
-        <a href="#">Começar agora →</a>
+        <a href="teste-intro.html">Começar agora →</a>
       </div>
     </aside>
 
@@ -251,11 +256,16 @@
 
       <div class="info-bar">
         <p><svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Você pode selecionar mais de uma área. Isso nos ajuda a entender melhor seus interesses!</p>
-        <button class="cta-btn">Começar teste →</button>
+        <button class="cta-btn" id="startTestBtn">Começar teste →</button>
       </div>
     </main>
 
   </div>
+
+  <!-- Login (Supabase): precisa vir ANTES do auth.js, que depende dessas duas -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
 
   <script src="js/main.js"></script>
 </body>
