@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const ehLinkPlaceholder = link.getAttribute('href') === '#';
 
       if (!ehLinkPlaceholder) {
-        // Link de verdade (ex: "teste-intro.html") — deixa o navegador navegar.
+        // Link de verdade (ex: "testes-areas.html") — deixa o navegador navegar.
         // Não precisamos mexer na classe "is-active" aqui: a página vai mudar
         // de qualquer forma, então esse estado visual deixa de importar.
         return;
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (acao === 'teste-vocacional') {
         // A página já existe agora — navega de verdade em vez de mostrar o aviso
-        window.location.href = 'teste-intro.html';
+        window.location.href = 'testes-areas.html';
       }
     });
   });
@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   startTestBtn.addEventListener('click', function () {
-    window.location.href = 'teste-intro.html';
+    window.location.href = 'testes-areas.html';
   });
 
 });
