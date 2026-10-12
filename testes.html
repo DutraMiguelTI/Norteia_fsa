@@ -1,25 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Responda ao questionário Norteia e explore áreas profissionais com as quais você mais se identifica." />
   <title>Norteia - Teste Vocacional</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/teste.css" />
 </head>
 <body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-area logo-home" href="index.html" aria-label="Norteia, voltar ao início">
+        <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+        <span class="logo-text"><strong>Norteia</strong><span>Descubra possibilidades. Encontre seu caminho.</span></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Navegação da página">
+        <a class="header-link" href="testes-areas.html">Testes por área</a>
+      </nav>
+    </div>
+  </header>
 
   <div class="teste-wrapper">
 
     <!-- Tela do teste (perguntas) -->
-    <div id="container-teste">
-      <p id="progresso"></p>
-      <h1 id="texto-pergunta"></h1>
-      <div id="area-opcoes"></div>
-      <button id="btn-voltar">&larr; Voltar</button>
+    <div id="container-teste" class="pergunta-card">
+
+      <div id="barra-progresso" class="barra-progresso" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="0" aria-valuemax="90" aria-valuenow="0">
+        <div id="barra-preenchida" class="barra-preenchida" aria-hidden="true"></div>
+      </div>
+      <p id="progresso" aria-live="polite"></p>
+
+      <h1 id="texto-pergunta" aria-live="polite"></h1>
+      <p class="instrucao-resposta">Não existe resposta certa ou errada. Considere o que combina com você, não apenas sua experiência atual.</p>
+      <div id="area-opcoes" role="group" aria-labelledby="texto-pergunta"></div>
+
+      <div class="acoes-pergunta">
+        <button id="btn-voltar" type="button">&larr; Voltar</button>
+        <button id="btn-confirmar" type="button" class="btn-confirmar" disabled>Confirmar e avançar &rarr;</button>
+      </div>
     </div>
 
     <!-- Tela de resultado (fica escondida até o teste acabar) -->
-    <div id="container-resultado" style="display: none;"></div>
+    <section id="container-resultado" class="resultado-card" aria-live="polite" hidden></section>
 
   </div>
 

@@ -67,12 +67,13 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q01",
       "area": "saude",
-      "texto": "Presto atenção em como o corpo humano funciona e no que pode ser feito para mantê-lo saudável.",
+      "texto": "Tenho interesse em entender como o corpo funciona e investigar formas de prevenir problemas de saúde.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
         "corpo_humano",
-        "conhecimento_saude"
+        "conhecimento_saude",
+        "pesquisa"
       ]
     },
     {
@@ -89,12 +90,12 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q03",
       "area": "saude",
-      "texto": "Em situações de emergência, consigo manter a calma e agir com responsabilidade.",
+      "texto": "Tenho interesse em organizar rotinas e recursos para que um serviço de saúde funcione bem.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
-        "emergencia",
-        "responsabilidade"
+        "gestao",
+        "organizacao_servico"
       ]
     },
     {
@@ -122,7 +123,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q06",
       "area": "tecnologia",
-      "texto": "Quando uma abordagem não funciona, testo outras até encontrar a que resolve o problema.",
+      "texto": "Testar alternativas até encontrar uma solução para um problema é uma atividade que me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -155,11 +156,13 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q09",
       "area": "negocios",
-      "texto": "Não hesito muito na hora de escolher entre alternativas diferentes.",
+      "texto": "Gosto de comparar custos e resultados para apoiar decisões financeiras.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
-        "tomada_decisao"
+        "tomada_decisao",
+        "calculo",
+        "racionalidade"
       ]
     },
     {
@@ -176,7 +179,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q11",
       "area": "direito",
-      "texto": "Antes de formar uma opinião, procuro entender os diferentes lados de uma situação.",
+      "texto": "Analisar os diferentes lados de uma situação antes de formar uma opinião me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -187,7 +190,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q12",
       "area": "direito",
-      "texto": "Tenho facilidade para defender um ponto de vista com argumentos consistentes.",
+      "texto": "Preparar argumentos para defender um ponto de vista é uma atividade que me atrai.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -264,7 +267,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q19",
       "area": "comunicacao",
-      "texto": "Converso com facilidade com pessoas bem diferentes de mim.",
+      "texto": "Interagir com pessoas de diferentes perfis e adaptar minha comunicação me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -297,7 +300,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q22",
       "area": "educacao",
-      "texto": "Tenho paciência para explicar algo de formas diferentes até a pessoa entender.",
+      "texto": "Explicar um assunto de formas diferentes até a pessoa entender me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -341,7 +344,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q26",
       "area": "psicologia",
-      "texto": "Percebo mudanças sutis de comportamento ou humor nas pessoas ao redor.",
+      "texto": "Observar mudanças no comportamento e no humor das pessoas me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -352,7 +355,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q27",
       "area": "psicologia",
-      "texto": "Consigo ouvir alguém e entender sua perspectiva antes de julgar.",
+      "texto": "Ouvir uma pessoa e procurar compreender sua perspectiva antes de opinar me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -374,7 +377,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q29",
       "area": "meio_ambiente",
-      "texto": "Penso em formas de reduzir desperdício no meu dia a dia.",
+      "texto": "Encontrar formas de reduzir o desperdício de recursos no cotidiano me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -506,7 +509,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q41",
       "area": "servicos_hospitalidade",
-      "texto": "Mantenho a postura profissional mesmo lidando com pessoas difíceis.",
+      "texto": "Atender pessoas com respeito e profissionalismo, mesmo em situações difíceis, me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -517,7 +520,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q42",
       "area": "servicos_hospitalidade",
-      "texto": "Trabalhar em ambientes movimentados, com contato direto com o público, não me incomoda.",
+      "texto": "Trabalhar em ambientes movimentados e com contato direto com o público me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -584,7 +587,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q53",
       "area": "saude",
-      "texto": "Trabalhar sob pressão para ajudar alguém em um momento crítico não me assusta.",
+      "texto": "Atuar para ajudar alguém em um momento crítico é uma atividade profissional que me atrai.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -639,7 +642,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q58",
       "area": "negocios",
-      "texto": "Sinto-me confortável negociando condições ou defendendo uma proposta.",
+      "texto": "Negociar condições e apresentar propostas para chegar a acordos me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -661,7 +664,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q60",
       "area": "direito",
-      "texto": "Percebo detalhes e inconsistências em textos ou documentos que outras pessoas deixam passar.",
+      "texto": "Examinar textos e documentos para identificar detalhes e inconsistências me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -672,7 +675,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q61",
       "area": "direito",
-      "texto": "Debater ideias, mesmo discordando de alguém, não me incomoda.",
+      "texto": "Debater ideias e construir argumentos diante de opiniões diferentes me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -705,7 +708,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q64",
       "area": "engenharia",
-      "texto": "Não me incomodo em testar e ajustar um projeto várias vezes até ele funcionar direito.",
+      "texto": "Testar e ajustar um projeto até que funcione como esperado me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -760,7 +763,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q69",
       "area": "comunicacao",
-      "texto": "Ajusto naturalmente meu jeito de falar dependendo de quem está do outro lado.",
+      "texto": "Adaptar a forma de comunicar uma ideia a diferentes públicos me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -771,7 +774,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q70",
       "area": "comunicacao",
-      "texto": "Tenho facilidade para prender a atenção de um grupo ao apresentar algo.",
+      "texto": "Apresentar uma ideia para um grupo e manter a atenção das pessoas me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -793,7 +796,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q72",
       "area": "educacao",
-      "texto": "Repito uma explicação de jeitos diferentes sem perder a paciência.",
+      "texto": "Buscar maneiras diferentes de explicar um conteúdo me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -815,7 +818,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q74",
       "area": "educacao",
-      "texto": "Gosto de planejar um conteúdo ou atividade de forma organizada antes de ensinar algo.",
+      "texto": "Planejar conteúdos e atividades de aprendizagem me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -826,7 +829,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q75",
       "area": "psicologia",
-      "texto": "Noto quando alguém está escondendo o que realmente sente.",
+      "texto": "Observar emoções e comportamentos para compreender o que uma pessoa sente me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -848,7 +851,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q77",
       "area": "psicologia",
-      "texto": "Sinto-me confortável ouvindo os problemas pessoais de alguém sem julgamento.",
+      "texto": "Ouvir alguém falar de um desafio pessoal e ajudar a organizar os próximos passos me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -859,7 +862,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q78",
       "area": "meio_ambiente",
-      "texto": "Fico incomodado ao ver desperdício de recursos naturais ou poluição.",
+      "texto": "Participar de iniciativas para enfrentar o desperdício de recursos naturais ou a poluição me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -903,7 +906,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q82",
       "area": "exatas",
-      "texto": "Prefiro uma resposta exata e comprovável a uma opinião subjetiva.",
+      "texto": "Investigar um problema até chegar a uma resposta exata e verificável me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -914,7 +917,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q83",
       "area": "exatas",
-      "texto": "Consigo identificar erros de cálculo ou raciocínio com facilidade.",
+      "texto": "Revisar cálculos para conferir resultados e localizar possíveis erros me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -980,7 +983,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q89",
       "area": "relacoes_internacionais",
-      "texto": "Me adapto bem a ambientes ou grupos culturalmente diferentes do meu.",
+      "texto": "Conviver e colaborar com pessoas de diferentes contextos culturais me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -991,7 +994,7 @@ const BANCO_PERGUNTAS = {
     {
       "id": "Q90",
       "area": "servicos_hospitalidade",
-      "texto": "Consigo antecipar o que alguém precisa antes mesmo de ser pedido.",
+      "texto": "Identificar as necessidades de uma pessoa e antecipar formas de atendê-la me interessa.",
       "tipo": "escala",
       "peso": 1.0,
       "tags": [
@@ -1309,10 +1312,10 @@ const BANCO_PERGUNTAS = {
         },
         {
           "id": "pesquisa_saude",
-          "nome": "Pesquisa em Saúde",
+          "nome": "Pesquisa e Prevenção em Saúde",
           "caracteristicas": [
             "pesquisa",
-            "investigacao"
+            "conhecimento_saude"
           ]
         },
         {
@@ -1874,10 +1877,10 @@ const BANCO_PERGUNTAS = {
     }
   ],
   "escala_resposta": {
-    "1": "Discordo totalmente / Não me identifico",
-    "2": "Discordo parcialmente",
-    "3": "Neutro / Não sei",
-    "4": "Concordo parcialmente",
-    "5": "Concordo totalmente / Muito me identifico"
+    "1": "Não combina comigo",
+    "2": "Combina pouco comigo",
+    "3": "Combina em parte comigo",
+    "4": "Combina bastante comigo",
+    "5": "Combina muito comigo"
   }
 };

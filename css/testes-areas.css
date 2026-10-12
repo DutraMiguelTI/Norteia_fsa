@@ -1,0 +1,212 @@
+.catalogo-wrapper {
+  width: min(980px, calc(100% - 48px));
+  margin: 28px auto 56px;
+  color: var(--cor-texto);
+}
+
+.catalogo-topo {
+  margin-bottom: 30px;
+}
+
+.catalogo-wrapper .marca-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.catalogo-wrapper main {
+  padding: 0;
+}
+
+.catalogo-intro {
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.catalogo-eyebrow {
+  margin-bottom: 9px;
+  color: var(--cor-primaria);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.catalogo-intro h1 {
+  margin-bottom: 10px;
+  color: var(--cor-texto);
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.catalogo-intro > p:not(.catalogo-eyebrow) {
+  max-width: 70ch;
+  color: var(--cor-texto-suave);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.catalogo-geral {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 42px;
+  margin-top: 18px;
+  padding: 9px 13px;
+  border: 1px solid #c9e3d7;
+  border-radius: 8px;
+  background: var(--cor-primaria-clara);
+  color: #176a49;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.catalogo-geral:hover {
+  border-color: var(--cor-primaria);
+}
+
+.catalogo-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+  list-style: none;
+}
+
+.catalogo-area {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 20px;
+  border: 1px solid var(--cor-borda);
+  border-left: 5px solid var(--area-color);
+  border-radius: 9px;
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.catalogo-area:hover {
+  border-top-color: color-mix(in srgb, var(--area-color) 36%, white);
+  border-right-color: color-mix(in srgb, var(--area-color) 36%, white);
+  border-bottom-color: color-mix(in srgb, var(--area-color) 36%, white);
+  box-shadow: 0 3px 12px rgba(26, 34, 51, 0.07);
+}
+
+.catalogo-area-cabecalho {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.catalogo-area-numero {
+  flex-shrink: 0;
+  color: var(--area-color);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.catalogo-area h2 {
+  color: var(--cor-texto);
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.catalogo-area-conteudo > p:not(.catalogo-area-quantidade) {
+  color: var(--cor-texto-suave);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.catalogo-area .catalogo-area-quantidade {
+  margin-top: 8px;
+  color: var(--area-color);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.catalogo-area-acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.catalogo-link-secundario,
+.catalogo-link-primario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 13px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.catalogo-link-secundario {
+  color: var(--area-color);
+}
+
+.catalogo-link-secundario:hover {
+  border-color: var(--area-color);
+  background: color-mix(in srgb, var(--area-color) 8%, white);
+}
+
+.catalogo-link-primario {
+  border-color: #176a49;
+  background: #176a49;
+  color: #fff;
+}
+
+.catalogo-link-primario:hover {
+  border-color: #11563a;
+  background: #11563a;
+}
+
+.catalogo-wrapper :focus-visible {
+  outline: 3px solid #eab308;
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .catalogo-wrapper {
+    width: min(100% - 32px, 560px);
+    margin-top: 18px;
+  }
+
+  .catalogo-topo {
+    margin-bottom: 18px;
+  }
+
+  .catalogo-wrapper main {
+    padding: 0;
+  }
+
+  .catalogo-intro h1 {
+    font-size: 26px;
+  }
+
+  .catalogo-area {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .catalogo-area-acoes {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .catalogo-area-acoes {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

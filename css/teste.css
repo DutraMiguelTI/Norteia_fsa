@@ -3,13 +3,54 @@
 .teste-wrapper {
   max-width: 640px;
   margin: 60px auto;
-  padding: 32px;
+  padding: 0 20px;
   font-family: Arial, sans-serif;
 }
 
+/* cabeçalho com a marca, mesma linguagem visual da tela de intro */
+.topo-marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.topo-marca-selo {
+  font-size: 20px;
+}
+.topo-marca-nome {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* card branco com sombra, igual ao da tela de intro, pra manter a identidade visual */
+.pergunta-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* barra de progresso visual (preenche conforme avança) */
+.barra-progresso {
+  width: 100%;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.barra-preenchida {
+  height: 100%;
+  background: #2E8B57;
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.25s ease;
+}
+
 #progresso {
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #888;
   margin-bottom: 8px;
 }
 
@@ -91,8 +132,15 @@
   background: #eafaf1;
 }
 
-#btn-voltar {
+.acoes-pergunta {
   margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#btn-voltar {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -110,6 +158,29 @@
   border-color: #2E8B57;
   color: #2E8B57;
   background: #f3fbf6;
+}
+
+.btn-confirmar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2E8B57;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.btn-confirmar:hover:not(:disabled) {
+  background: #256e46;
+}
+/* enquanto nenhuma opção foi escolhida, o botão fica visivelmente desabilitado */
+.btn-confirmar:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
 
 .area-principal {
@@ -225,4 +296,369 @@
 /* garante que o botão funcione bem tanto como <button> quanto como <a> */
 a.btn-comecar {
   text-decoration: none;
+}
+
+.teste-wrapper {
+  max-width: 720px;
+  margin: 36px auto;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.topo-marca {
+  min-height: 40px;
+}
+
+.topo-marca-selo {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--cor-primaria-clara);
+}
+
+.topo-marca-nome {
+  color: var(--cor-texto);
+}
+
+.link-inicio {
+  margin-left: auto;
+  color: var(--cor-primaria);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pergunta-card,
+.resultado-card,
+.intro-card {
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: var(--cor-branco);
+  box-shadow: 0 8px 28px rgba(26, 34, 51, 0.07);
+}
+
+.pergunta-card,
+.resultado-card {
+  padding: 36px;
+}
+
+.barra-progresso {
+  height: 8px;
+  border-radius: 8px;
+  background: #e9efec;
+}
+
+.barra-preenchida {
+  background: var(--cor-primaria);
+}
+
+#progresso {
+  margin: 0 0 24px;
+  color: var(--cor-texto-suave);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#texto-pergunta {
+  margin-bottom: 10px;
+  color: var(--cor-texto);
+  font-size: 23px;
+  line-height: 1.4;
+}
+
+.instrucao-resposta {
+  margin-bottom: 22px;
+  color: var(--cor-texto-suave);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.opcao-linha {
+  min-height: 58px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+}
+
+.opcao-linha:hover {
+  border-color: var(--cor-primaria);
+  background: var(--cor-primaria-clara);
+}
+
+.opcao-linha.selecionada {
+  border-color: #176a49;
+  background: #176a49;
+}
+
+.opcao-numero {
+  border-color: var(--cor-primaria);
+  color: var(--cor-primaria);
+}
+
+.acoes-pergunta {
+  margin-top: 24px;
+}
+
+#btn-voltar,
+.btn-confirmar,
+.btn-comecar {
+  min-height: 46px;
+  border-radius: 8px;
+}
+
+#btn-voltar {
+  border-color: var(--cor-borda);
+}
+
+.btn-confirmar,
+.btn-comecar {
+  background: #176a49;
+}
+
+.btn-confirmar:hover:not(:disabled),
+.btn-comecar:hover {
+  background: #11563a;
+}
+
+.btn-confirmar:disabled {
+  background: #d9dfdc;
+  color: #59635f;
+}
+
+.area-principal {
+  margin: 8px 0 28px;
+  color: #176a49;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.resultado-card h2 {
+  margin-bottom: 8px;
+  color: var(--cor-texto);
+  font-size: 26px;
+}
+
+.resultado-card h3,
+.intro-card h2 {
+  margin: 26px 0 12px;
+  color: var(--cor-texto);
+  font-size: 17px;
+}
+
+.lista-resultado li {
+  padding: 12px 0;
+  border-bottom: 0;
+}
+
+.resultado-item > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+  color: var(--cor-texto);
+  font-size: 14px;
+}
+
+.resultado-item strong {
+  flex-shrink: 0;
+  color: #176a49;
+}
+
+.btn-detalhar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  margin-top: 10px;
+  padding: 7px 12px;
+  border: 1px solid #b8d9cb;
+  border-radius: 7px;
+  color: #176a49;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-detalhar:hover {
+  border-color: var(--cor-primaria);
+  background: var(--cor-primaria-clara);
+}
+
+.resultado-trilho {
+  display: block;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #e9efec;
+}
+
+.resultado-trilho > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--cor-primaria);
+}
+
+.acoes-resultado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.acoes-resultado .btn-confirmar {
+  padding: 12px 18px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.aviso-metodologico {
+  padding-top: 18px;
+  border-top: 1px solid var(--cor-borda);
+  line-height: 1.6;
+}
+
+.intro-card {
+  padding: 40px;
+}
+
+.intro-etiqueta {
+  margin-bottom: 12px;
+  color: var(--cor-primaria);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.intro-card h1 {
+  max-width: 19ch;
+  color: var(--cor-texto);
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.intro-card h2 {
+  margin-top: 28px;
+}
+
+.intro-descricao {
+  max-width: 60ch;
+  line-height: 1.65;
+}
+
+.badge {
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+}
+
+.intro-dicas li {
+  line-height: 1.5;
+}
+
+.intro-aviso {
+  margin-top: 18px;
+  color: var(--cor-texto-suave);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.pergunta-area {
+  margin: 18px 0;
+  color: var(--cor-texto);
+  font-size: 21px;
+  line-height: 1.45;
+}
+
+.titulo-ranking {
+  margin: 28px 0 12px;
+  color: var(--cor-texto);
+  font-size: 18px;
+}
+
+.link-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-confirmar.link-botao:hover {
+  background: #11563a;
+}
+
+.teste-wrapper :focus-visible {
+  outline: 3px solid #eab308;
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .teste-wrapper {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+
+  .pergunta-card,
+  .resultado-card,
+  .intro-card {
+    padding: 22px;
+  }
+
+  #texto-pergunta {
+    font-size: 20px;
+  }
+
+  .opcao-linha {
+    gap: 12px;
+    padding: 10px 12px;
+  }
+
+  .opcao-legenda {
+    line-height: 1.45;
+  }
+
+  .acoes-pergunta {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  #btn-voltar,
+  .btn-confirmar {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .acoes-resultado {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .acoes-resultado .link-botao {
+    width: 100%;
+  }
+
+  .btn-detalhar {
+    width: fit-content;
+  }
+
+  .intro-card h1 {
+    font-size: 25px;
+  }
+
+  .btn-comecar {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barra-preenchida,
+  .opcao-linha,
+  .btn-confirmar,
+  .btn-comecar {
+    transition: none;
+  }
 }
