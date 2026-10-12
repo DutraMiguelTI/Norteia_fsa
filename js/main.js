@@ -393,14 +393,41 @@ document.addEventListener('DOMContentLoaded', function () {
 // (o que pareceria quebrado, já que os cards têm hover), mostramos um aviso.
 document.addEventListener('DOMContentLoaded', function () {
 
-  const cards = document.querySelectorAll('.cards-grid .card');
+   const cards = document.querySelectorAll('.cards-grid .card');
+
+  // Qual "id" cada card tem na página area.html (são os mesmos ids do perguntas-data.js)
+  const IDS_DAS_AREAS = {
+    'Saúde e Bem-estar': 'saude',
+    'Tecnologia e Inovação': 'tecnologia',
+    'Negócios e Gestão': 'negocios',
+    'Direito e Justiça': 'direito',
+    'Engenharia e Construção': 'engenharia',
+    'Artes e Design': 'artes',
+    'Comunicação e Marketing': 'comunicacao',
+    'Educação': 'educacao',
+    'Psicologia e Comportamento': 'psicologia',
+    'Meio Ambiente': 'meio_ambiente',
+    'Ciências Exatas': 'exatas',
+    'Ciências Biológicas': 'biologicas',
+    'Relações Internacionais': 'relacoes_internacionais',
+    'Serviços e Hospitalidade': 'servicos_hospitalidade',
+    'Esportes e Bem-estar': 'esportes'
+  };
 
   cards.forEach(function (card) {
     const tituloEl = card.querySelector('h4');
     const nomeArea = tituloEl ? tituloEl.textContent : 'esta área';
 
     function abrirArea() {
-      mostrarToast('🚧 Página de "' + nomeArea + '" em construção — em breve por aqui!');
+      const idDaArea = IDS_DAS_AREAS[nomeArea];
+
+      if (idDaArea) {
+        // Leva pra página da área: o area.js lê esse "?area=..." do endereço
+        window.location.href = 'area.html?area=' + encodeURIComponent(idDaArea);
+      } else {
+        // Se algum card novo ainda não estiver na lista acima, mantém o aviso de antes
+        mostrarToast('🚧 Página de "' + nomeArea + '" em construção — em breve por aqui!');
+      }
     }
 
     // Deixa o card focável e identificável como um "botão" pra quem usa teclado
