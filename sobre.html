@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça a Norteia: o que é, como funciona, o que o teste é e quem faz o projeto.">
+  <title>Norteia - Sobre</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sobre.css">
+</head>
+<body>
+
+  <!-- 1. HEADER -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-area logo-home" href="index.html" aria-label="Norteia, voltar ao início">
+        <span class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        </span>
+        <span class="logo-text"><strong>Norteia</strong><span>Descubra possibilidades. Encontre seu caminho.</span></span>
+      </a>
+      <div class="topbar-actions">
+        <!-- Botão de "Entrar": começa escondido. O js/auth.js decide, ao carregar a página,
+             se mostra ESSE botão (visitante) ou o .profile-menu abaixo (logado) -->
+        <a href="login.html" class="login-btn" id="loginBtn" hidden>Entrar</a>
+
+        <!-- Menu do perfil: o JS vai adicionar/remover a classe "is-open" aqui pra abrir/fechar.
+             Começa escondido pelo mesmo motivo do botão "Entrar" acima. -->
+        <div class="profile-menu" id="profileMenu" hidden>
+          <button class="profile-btn" id="profileMenuBtn" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="profile-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="profile-dropdown-header">
+              <span class="profile-avatar profile-avatar--small">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span id="profileUserName">Olá, perfil1!</span>
+            </div>
+            <ul class="profile-dropdown-list">
+              <li>
+                <a href="#">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  Favoritos
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Conta
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  Configurações
+                </a>
+              </li>
+              <li>
+                <a href="#" id="logoutBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                  Sair
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+
+    <!-- 2. SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Botão de retrair/expandir: o JS alterna a classe "is-collapsed" aqui na sidebar -->
+      <button class="sidebar-toggle" id="sidebarToggleBtn" type="button" aria-expanded="true" aria-label="Recolher menu lateral">
+        <svg class="sidebar-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> <span class="nav-label">Início</span></a></li>
+          <li><a href="#"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> <span class="nav-label">Descobrir</span></a></li>
+          <li><a href="testes-areas.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A5.5 5.5 0 0 0 4 7.5v0A2.5 2.5 0 0 0 4 12.5 5.5 5.5 0 0 0 9.5 18v2M14.5 2A5.5 5.5 0 0 1 20 7.5v0a2.5 2.5 0 0 1 0 5A5.5 5.5 0 0 1 14.5 18v2M9.5 2h5M9.5 20h5"/></svg> <span class="nav-label">Testes</span></a></li>
+          <li><a href="sobre.html" class="is-active"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> <span class="nav-label">Sobre</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="help-card">
+        <h3><svg class="help-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg> Ainda em dúvida?</h3>
+        <p>Faça nossos testes e descubra suas melhores combinações.</p>
+        <a href="testes-areas.html">Começar agora →</a>
+      </div>
+    </aside>
+
+    <!-- 3. CONTEÚDO PRINCIPAL -->
+    <main class="content sobre-page">
+
+      <!-- ===== 1. O QUE É A NORTEIA ===== -->
+      <section class="sobre-intro" aria-labelledby="sobre-titulo">
+        <div class="sobre-intro-texto">
+          <p class="sobre-etiqueta">Sobre</p>
+          <h1 id="sobre-titulo">O que é a Norteia</h1>
+          <p>A Norteia é uma plataforma criada para ajudar estudantes a encontrar caminhos e a entender como funcionam as áreas e os cursos de especialização.</p>
+          <p>Em vez de começar por uma lista de cursos, você começa pelos seus interesses: explora as áreas profissionais, responde a um teste e descobre por onde faz sentido começar a pesquisar.</p>
+        </div>
+
+        <!-- Ilustração só decorativa (alt vazio): o conteúdo já está todo no texto -->
+        <div class="sobre-intro-imagem" aria-hidden="true">
+          <picture>
+            <source srcset="images/imagem_sobre.webp" type="image/webp">
+            <img src="images/imagem_sobre.webp" alt="">
+          </picture>
+        </div>
+      </section>
+
+      <!-- ===== 2. COMO FUNCIONA ===== -->
+      <section class="sobre-secao" aria-labelledby="sobre-como-titulo">
+        <h2 class="sobre-secao-titulo" id="sobre-como-titulo">Como funciona</h2>
+        <p class="sobre-secao-sub">São três passos, e você pode voltar a qualquer um deles quando quiser.</p>
+
+        <ol class="sobre-passos">
+          <li class="sobre-passo">
+            <span class="sobre-passo-numero" aria-hidden="true">1</span>
+            <h3>Explore as áreas</h3>
+            <p>Conheça as 15 áreas profissionais da Norteia. Cada uma tem uma apresentação, com o que a área envolve e as subáreas que fazem parte dela.</p>
+          </li>
+          <li class="sobre-passo">
+            <span class="sobre-passo-numero" aria-hidden="true">2</span>
+            <h3>Faça o teste</h3>
+            <p>Responda a 90 afirmações, pensando no quanto cada uma combina com você. Leva de 10 a 15 minutos, e não existe resposta certa ou errada.</p>
+          </li>
+          <li class="sobre-passo">
+            <span class="sobre-passo-numero" aria-hidden="true">3</span>
+            <h3>Veja suas afinidades</h3>
+            <p>O resultado mostra as áreas com maior afinidade e os caminhos dentro delas. Se quiser, aprofunde com o teste de uma área para comparar as subáreas.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ===== 3. O QUE O TESTE É E O QUE NÃO É ===== -->
+      <section class="sobre-secao" aria-labelledby="sobre-teste-titulo">
+        <h2 class="sobre-secao-titulo" id="sobre-teste-titulo">O que o teste é e o que não é</h2>
+        <p class="sobre-secao-sub">O teste ajuda a organizar suas ideias, mas não decide nada por você.</p>
+
+        <div class="sobre-comparacao">
+          <div class="sobre-caixa sobre-caixa--e">
+            <h3>O que ele é</h3>
+            <ul>
+              <li>Um indicador exploratório de afinidade, a partir do que você mesmo responde.</li>
+              <li>Um ponto de partida para pesquisar áreas, cursos e profissões.</li>
+              <li>Uma ajuda para conversar sobre possibilidades com família, professores e colegas.</li>
+            </ul>
+          </div>
+
+          <div class="sobre-caixa sobre-caixa--nao">
+            <h3>O que ele não é</h3>
+            <ul>
+              <li>Um teste psicométrico validado.</li>
+              <li>Um substituto para a orientação profissional.</li>
+              <li>Uma resposta definitiva sobre a sua carreira.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="sobre-aviso">Ao responder, considere seus interesses mesmo que ainda não tenha experiência na área: o que importa é o que combina com você, não só o que você já fez.</p>
+      </section>
+
+      <!-- ===== 4. QUEM FAZ ===== -->
+      <section class="sobre-secao" aria-labelledby="sobre-equipe-titulo">
+        <h2 class="sobre-secao-titulo" id="sobre-equipe-titulo">Quem faz a Norteia</h2>
+        <p class="sobre-secao-sub">A Norteia é um projeto universitário, desenvolvido por:</p>
+
+        <ul class="sobre-equipe">
+          <li class="sobre-membro">Mateus Dall</li>
+          <li class="sobre-membro">Murillo Scotti</li>
+          <li class="sobre-membro">Matheus Spadim</li>
+          <li class="sobre-membro">Miguel Dutra</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Login (Supabase): precisa vir ANTES do auth.js, que depende dessas duas -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
